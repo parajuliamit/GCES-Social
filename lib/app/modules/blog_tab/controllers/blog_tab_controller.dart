@@ -1,11 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:gces_social/app/app_repository.dart';
 import 'package:gces_social/app/data/exception/server_exception.dart';
+import 'package:gces_social/app/data/models/blog/blog_response.dart';
 import 'package:get/get.dart';
 
 class BlogTabController extends GetxController {
   final isLoading = false.obs;
-  final blogs = [].obs;
+  final blogs = <BlogResponse>[].obs;
   final errorMessage = 'Server Error'.obs;
   final isError = false.obs;
   final blogRepo = Get.find<AppRepository>().getBlogRepository();
@@ -19,7 +20,8 @@ class BlogTabController extends GetxController {
     isLoading.toggle();
     isError(false);
     try {
-      blogs.assignAll(await blogRepo.getBlogs());
+      blogs.assignAll((await blogRepo.getBlogs()).reversed);
+
       isLoading.toggle();
     } catch (e) {
       isLoading.toggle();
@@ -30,6 +32,21 @@ class BlogTabController extends GetxController {
       } else {
         errorMessage(e.toString());
       }
+    }
+  }
+
+  Future<void> likeBlog(int index) async {
+    try {
+      blogs[index].liked = !blogs[index].liked;
+      if (blogs[index].liked) {
+        blogs[index].totalLikes++;
+      } else {
+        blogs[index].totalLikes--;
+      }
+      update();
+      await blogRepo.likeBlog(blogs[index].id.toString());
+    } catch (e) {
+      print(e);
     }
   }
 }

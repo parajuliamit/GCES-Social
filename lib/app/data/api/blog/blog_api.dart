@@ -24,4 +24,7 @@ abstract class BlogApi {
 
   @POST("blogs/comment/")
   Future<dynamic> postComment(@Body() CommentRequest commentRequest);
+
+  @POST("blogs/like/{blogId}/")
+  Future<dynamic> likeBlog(@Path("blogId") String blogId);
 }

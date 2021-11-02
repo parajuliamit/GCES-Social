@@ -32,4 +32,8 @@ class BlogRepository {
   Future<dynamic> postComment(CommentRequest commentRequest) async {
     return await BlogApi(_dio).postComment(commentRequest);
   }
+
+  Future<void> likeBlog(String blogId) async {
+    await BlogApi(_dio).likeBlog(blogId);
+  }
 }

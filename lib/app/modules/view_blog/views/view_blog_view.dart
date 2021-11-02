@@ -104,7 +104,7 @@ class ViewBlogView extends GetView<ViewBlogController> {
                                       mainAxisAlignment: MainAxisAlignment.end,
                                       children: [
                                         Text(
-                                          controller.blog.value.likes
+                                          controller.blog.value.totalLikes
                                               .toString(),
                                           style: const TextStyle(
                                               fontSize: 15, color: Colors.grey),

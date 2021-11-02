@@ -3,15 +3,17 @@ class BlogResponse {
   late String user;
   late String title;
   late String createdAt;
-  late int likes;
+  late int totalLikes;
   late int commentCount;
+  late bool liked;
 
   BlogResponse(
       {required this.id,
       required this.user,
       required this.title,
       required this.createdAt,
-      required this.likes,
+      required this.totalLikes,
+      required this.liked,
       required this.commentCount});
 
   BlogResponse.fromJson(Map<String, dynamic> json) {
@@ -19,7 +21,8 @@ class BlogResponse {
     this.user = json["user"];
     this.title = json["title"];
     this.createdAt = json["createdAt"];
-    this.likes = json["likes"];
+    this.totalLikes = json["total_likes"];
+    this.liked = json["liked"];
     this.commentCount = json["comment_count"];
   }
 
@@ -29,7 +32,8 @@ class BlogResponse {
     data["user"] = this.user;
     data["title"] = this.title;
     data["createdAt"] = this.createdAt;
-    data["likes"] = this.likes;
+    data["total_likes"] = this.totalLikes;
+    data["liked"] = this.liked;
     data["comment_count"] = this.commentCount;
     return data;
   }

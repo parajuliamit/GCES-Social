@@ -38,7 +38,7 @@ class BlogTabView extends GetView<BlogTabController> {
                         child: ListView.builder(
                             itemCount: controller.blogs.length,
                             itemBuilder: (context, index) {
-                              return BlogCard(controller.blogs[index]);
+                              return BlogCard(index);
                             }),
                       ),
                     ),
