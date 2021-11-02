@@ -67,4 +67,19 @@ class ViewBlogController extends GetxController {
     }
     isCommentPosting(false);
   }
+
+  Future<void> likeBlog() async {
+    try {
+      blog.value.liked = !blog.value.liked;
+      if (blog.value.liked) {
+        blog.value.totalLikes++;
+      } else {
+        blog.value.totalLikes--;
+      }
+      update();
+      await blogRepo.likeBlog(blog.value.id.toString());
+    } catch (e) {
+      print(e);
+    }
+  }
 }

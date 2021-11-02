@@ -14,252 +14,265 @@ class ViewBlogView extends GetView<ViewBlogController> {
         appBar: AppBar(
           title: const Text('Blog'),
         ),
-        body: RefreshIndicator(
-          onRefresh: () async {
-            controller.getBlogDetail(Get.parameters['id']!);
-          },
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
-                    child: Row(
-                      children: [
-                        const CircleAvatar(
-                          backgroundColor: Colors.deepOrange,
-                          foregroundColor: Colors.white,
-                          child: Icon(
-                            Icons.account_circle,
-                            size: 40,
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: Row(
+                    children: [
+                      const CircleAvatar(
+                        backgroundColor: Colors.deepOrange,
+                        foregroundColor: Colors.white,
+                        child: Icon(
+                          Icons.account_circle,
+                          size: 40,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            Get.parameters['user']!,
+                            style: const TextStyle(
+                                fontWeight: FontWeight.w600, fontSize: 15),
                           ),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              Get.parameters['user']!,
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.w600, fontSize: 15),
-                            ),
-                            Text(convertToAgo(
-                                DateTime.parse(Get.parameters['time']!)))
-                          ],
-                        ),
-                      ],
-                    ),
+                          Text(convertToAgo(
+                              DateTime.parse(Get.parameters['time']!)))
+                        ],
+                      ),
+                    ],
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Obx(
-                    () => controller.isLoading.value
-                        ? const Center(
-                            child: Loading(),
-                          )
-                        : controller.isError.value
-                            ? ErrorPage(
-                                controller.errorMessage.value,
-                                () => controller
-                                    .getBlogDetail(Get.parameters['id']!))
-                            : Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 15),
-                                    child: Text(
-                                      controller.blog.value.title,
-                                      style: const TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w500),
-                                    ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Obx(
+                  () => controller.isLoading.value
+                      ? const Center(
+                          child: Loading(),
+                        )
+                      : controller.isError.value
+                          ? ErrorPage(
+                              controller.errorMessage.value,
+                              () => controller
+                                  .getBlogDetail(Get.parameters['id']!))
+                          : Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 15),
+                                  child: Text(
+                                    controller.blog.value.title,
+                                    style: const TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w500),
                                   ),
-                                  const SizedBox(
-                                    height: 10,
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 15),
+                                  child: Text(
+                                    controller.blog.value.content,
+                                    textAlign: TextAlign.justify,
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 15),
-                                    child: Text(
-                                      controller.blog.value.content,
-                                      textAlign: TextAlign.justify,
-                                    ),
+                                ),
+                                const SizedBox(
+                                  height: 5,
+                                ),
+                                const Divider(
+                                  thickness: 1,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 15),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      InkWell(
+                                        onTap: () async {
+                                          await controller.likeBlog();
+                                        },
+                                        child: GetBuilder<ViewBlogController>(
+                                            builder: (controller) {
+                                          return Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.end,
+                                            children: [
+                                              Text(
+                                                controller.blog.value.totalLikes
+                                                    .toString(),
+                                                style: TextStyle(
+                                                    fontSize: 15,
+                                                    color: controller
+                                                            .blog.value.liked
+                                                        ? Colors.blue
+                                                        : Colors.grey),
+                                              ),
+                                              const SizedBox(
+                                                width: 5,
+                                              ),
+                                              Icon(
+                                                Icons.thumb_up,
+                                                color:
+                                                    controller.blog.value.liked
+                                                        ? Colors.blue
+                                                        : Colors.grey,
+                                              ),
+                                            ],
+                                          );
+                                        }),
+                                      ),
+
+                                      const SizedBox(
+                                        width: 30,
+                                      ),
+                                      Text(
+                                        controller.blog.value.commentCount
+                                            .toString(),
+                                        style: const TextStyle(
+                                            fontSize: 15, color: Colors.grey),
+                                      ),
+                                      const SizedBox(
+                                        width: 5,
+                                      ),
+                                      const Icon(
+                                        Icons.messenger_outlined,
+                                        color: Colors.grey,
+                                      ),
+                                      // const SizedBox(
+                                      //   width: 5,
+                                      // ),
+                                      // const Text(
+                                      //   'View Comments',
+                                      //   style: TextStyle(color: Colors.grey),
+                                      // ),
+                                    ],
                                   ),
-                                  const SizedBox(
-                                    height: 5,
-                                  ),
-                                  const Divider(
-                                    thickness: 1,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 15),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        Text(
-                                          controller.blog.value.totalLikes
-                                              .toString(),
-                                          style: const TextStyle(
-                                              fontSize: 15, color: Colors.grey),
-                                        ),
-                                        const SizedBox(
-                                          width: 5,
-                                        ),
-                                        const Icon(
-                                          Icons.thumb_up,
-                                          color: Colors.grey,
-                                        ),
-                                        const SizedBox(
-                                          width: 30,
-                                        ),
-                                        Text(
-                                          controller.blog.value.commentCount
-                                              .toString(),
-                                          style: const TextStyle(
-                                              fontSize: 15, color: Colors.grey),
-                                        ),
-                                        const SizedBox(
-                                          width: 5,
-                                        ),
-                                        const Icon(
-                                          Icons.messenger_outlined,
-                                          color: Colors.grey,
-                                        ),
-                                        // const SizedBox(
-                                        //   width: 5,
-                                        // ),
-                                        // const Text(
-                                        //   'View Comments',
-                                        //   style: TextStyle(color: Colors.grey),
-                                        // ),
-                                      ],
-                                    ),
-                                  ),
-                                  controller.isCommentPosting.value
-                                      ? const Center(
-                                          child: Loading(),
-                                        )
-                                      : Card(
-                                          margin: const EdgeInsets.all(10),
-                                          child: Padding(
-                                            padding: const EdgeInsets.fromLTRB(
-                                                5, 0, 5, 10),
-                                            child: Column(
-                                              children: [
-                                                ListTile(
-                                                  title: TextField(
-                                                    controller: controller
-                                                        .commentController,
-                                                    decoration:
-                                                        const InputDecoration(
-                                                            hintText:
-                                                                'Write your comment'),
-                                                  ),
-                                                  trailing: TextButton(
-                                                      onPressed: () {
-                                                        controller.postComment(
-                                                            Get.parameters[
-                                                                'id']!);
-                                                      },
-                                                      child:
-                                                          const Text('Send')),
+                                ),
+                                controller.isCommentPosting.value
+                                    ? const Center(
+                                        child: Loading(),
+                                      )
+                                    : Card(
+                                        margin: const EdgeInsets.all(10),
+                                        child: Padding(
+                                          padding: const EdgeInsets.fromLTRB(
+                                              5, 0, 5, 10),
+                                          child: Column(
+                                            children: [
+                                              ListTile(
+                                                title: TextField(
+                                                  controller: controller
+                                                      .commentController,
+                                                  decoration: const InputDecoration(
+                                                      hintText:
+                                                          'Write your comment'),
                                                 ),
-                                                ListView.builder(
-                                                    shrinkWrap: true,
-                                                    physics:
-                                                        const NeverScrollableScrollPhysics(),
-                                                    itemCount: controller.blog
-                                                        .value.commentCount,
-                                                    reverse: true,
-                                                    itemBuilder:
-                                                        (context, index) {
-                                                      return Column(
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          const Divider(
-                                                            thickness: 1,
+                                                trailing: TextButton(
+                                                    onPressed: () {
+                                                      controller.postComment(Get
+                                                          .parameters['id']!);
+                                                    },
+                                                    child: const Text('Send')),
+                                              ),
+                                              ListView.builder(
+                                                  shrinkWrap: true,
+                                                  physics:
+                                                      const NeverScrollableScrollPhysics(),
+                                                  itemCount: controller
+                                                      .blog.value.commentCount,
+                                                  reverse: true,
+                                                  itemBuilder:
+                                                      (context, index) {
+                                                    return Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        const Divider(
+                                                          thickness: 1,
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .symmetric(
+                                                                  horizontal:
+                                                                      15,
+                                                                  vertical: 5),
+                                                          child: Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .end,
+                                                            children: [
+                                                              Text(
+                                                                controller
+                                                                    .blog
+                                                                    .value
+                                                                    .comment![
+                                                                        index]
+                                                                    .user,
+                                                                style: const TextStyle(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600),
+                                                              ),
+                                                              Text(
+                                                                convertToAgo(DateTime
+                                                                    .parse(controller
+                                                                        .blog
+                                                                        .value
+                                                                        .comment![
+                                                                            index]
+                                                                        .createdAt)),
+                                                                style: TextStyle(
+                                                                    color: Colors
+                                                                            .grey[
+                                                                        600],
+                                                                    fontSize:
+                                                                        12),
+                                                              ),
+                                                            ],
                                                           ),
-                                                          Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                        .symmetric(
-                                                                    horizontal:
-                                                                        15,
-                                                                    vertical:
-                                                                        5),
-                                                            child: Row(
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .spaceBetween,
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .end,
-                                                              children: [
-                                                                Text(
-                                                                  controller
-                                                                      .blog
-                                                                      .value
-                                                                      .comment![
-                                                                          index]
-                                                                      .user,
-                                                                  style: const TextStyle(
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600),
-                                                                ),
-                                                                Text(
-                                                                  convertToAgo(DateTime.parse(controller
-                                                                      .blog
-                                                                      .value
-                                                                      .comment![
-                                                                          index]
-                                                                      .createdAt)),
-                                                                  style: TextStyle(
-                                                                      color: Colors
-                                                                              .grey[
-                                                                          600],
-                                                                      fontSize:
-                                                                          12),
-                                                                ),
-                                                              ],
-                                                            ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .symmetric(
+                                                                  horizontal:
+                                                                      15),
+                                                          child: Text(
+                                                            controller
+                                                                .blog
+                                                                .value
+                                                                .comment![index]
+                                                                .comment,
                                                           ),
-                                                          Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                        .symmetric(
-                                                                    horizontal:
-                                                                        15),
-                                                            child: Text(
-                                                              controller
-                                                                  .blog
-                                                                  .value
-                                                                  .comment![
-                                                                      index]
-                                                                  .comment,
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      );
-                                                    }),
-                                              ],
-                                            ),
+                                                        ),
+                                                      ],
+                                                    );
+                                                  }),
+                                            ],
                                           ),
-                                        )
-                                ],
-                              ),
-                  ),
-                ],
-              ),
+                                        ),
+                                      )
+                              ],
+                            ),
+                ),
+              ],
             ),
           ),
         ));
