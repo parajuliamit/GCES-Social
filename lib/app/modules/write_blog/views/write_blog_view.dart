@@ -11,9 +11,7 @@ class WriteBlogView extends GetView<WriteBlogController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
-        title: Text('Write a Blog'),
-        centerTitle: true,
+        title: const Text('Write a Blog'),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
@@ -22,9 +20,9 @@ class WriteBlogView extends GetView<WriteBlogController> {
             const SizedBox(
               height: 10,
             ),
-            TextFormField(
+            TextField(
+              controller: controller.titleController,
               textInputAction: TextInputAction.next,
-              onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
               maxLength: 50,
               textAlign: TextAlign.left,
               onChanged: (value) {},
@@ -34,10 +32,10 @@ class WriteBlogView extends GetView<WriteBlogController> {
             const SizedBox(
               height: 8.0,
             ),
-            TextFormField(
+            TextField(
+                controller: controller.contentController,
                 maxLines: 20,
                 textInputAction: TextInputAction.done,
-                onFieldSubmitted: (_) => FocusScope.of(context).unfocus(),
                 textAlign: TextAlign.left,
                 onChanged: (value) {},
                 decoration: kBlogInputDecoration.copyWith(
@@ -45,19 +43,26 @@ class WriteBlogView extends GetView<WriteBlogController> {
             const SizedBox(
               height: 24.0,
             ),
-            CustomButton(
-              color: Colors.blue,
-              text: 'POST',
-              onPress: () {
-                const snackBar = SnackBar(
-                  content: Text(
-                    'Your article is submitted for verification.',
-                  ),
-                );
-                ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                Get.back();
-              },
-              textColor: Colors.white,
+            Obx(
+              () => controller.isLoading.value
+                  ? const Center(
+                      child: Loading(),
+                    )
+                  : CustomButton(
+                      color: kGreenishBlue,
+                      text: 'POST',
+                      onPress: () async {
+                        controller.postBlog();
+                        // const snackBar = SnackBar(
+                        //   content: Text(
+                        //     'Your article is submitted for verification.',
+                        //   ),
+                        // );
+                        // ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        // Get.back();
+                      },
+                      textColor: Colors.white,
+                    ),
             ),
             const SizedBox(height: 10),
           ],

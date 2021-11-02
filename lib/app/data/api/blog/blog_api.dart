@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:gces_social/app/data/models/blog/comment_request.dart';
+import 'package:gces_social/app/data/models/blog/write_blog_request.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../../models/blog/blog_response.dart';
@@ -15,4 +17,11 @@ abstract class BlogApi {
 
   @GET("/blogs/{blogId}/")
   Future<BlogDetailResponse> getBlogDetail(@Path("blogId") String blogId);
+
+  @POST("blogs/create/")
+  Future<BlogDetailResponse> writeBlog(
+      @Body() WriteBlogRequest writeBlogRequest);
+
+  @POST("blogs/comment/")
+  Future<dynamic> postComment(@Body() CommentRequest commentRequest);
 }
