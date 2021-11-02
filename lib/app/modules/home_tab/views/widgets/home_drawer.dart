@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gces_social/app/app_controller.dart';
 import 'package:gces_social/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -120,9 +121,11 @@ class HomeDrawer extends StatelessWidget {
                 ),
                 Align(
                   alignment: Alignment.center,
-                  child: FlatButton(
+                  child: MaterialButton(
+                    elevation: 0,
                     color: Colors.blue[800],
                     onPressed: () {
+                      Get.find<AppController>().logout();
                       Get.offAllNamed(Routes.LOGOUT);
                     },
                     child: const Text(

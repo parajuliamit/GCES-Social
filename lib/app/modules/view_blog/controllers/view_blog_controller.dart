@@ -1,20 +1,32 @@
+import 'package:dio/dio.dart';
+import 'package:gces_social/app/data/exception/server_exception.dart';
+import 'package:gces_social/app/data/models/blog/blog_detail_response.dart';
 import 'package:get/get.dart';
 
+import '../../../app_repository.dart';
+
 class ViewBlogController extends GetxController {
-  //TODO: Implement ViewBlogController
+  final isLoading = false.obs;
+  final blog = BlogDetailResponse().obs;
+  final errorMessage = 'Server Error'.obs;
+  final isError = false.obs;
+  final blogRepo = Get.find<AppRepository>().getBlogRepository();
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  void getBlogDetail(String id) async {
+    isLoading.toggle();
+    isError(false);
+    try {
+      blog(await blogRepo.getBlogDetail(id));
+      isLoading.toggle();
+    } catch (e) {
+      isLoading.toggle();
+      isError(true);
+      print(e);
+      if (e is DioError) {
+        errorMessage(ServerError.withError(error: e).getErrorMessage());
+      } else {
+        errorMessage(e.toString());
+      }
+    }
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {}
-  void increment() => count.value++;
 }

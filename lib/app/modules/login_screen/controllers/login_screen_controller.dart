@@ -16,8 +16,8 @@ class LoginScreenController extends GetxController {
   final isLoading = false.obs;
 
   void login() async {
-    Get.offAllNamed(Routes.HOME);
-    return;
+    // Get.offAllNamed(Routes.HOME);
+    // return;
     // if (!GetUtils.isEmail(emailController.text)) {
     if (emailController.text.isEmpty) {
       Get.rawSnackbar(

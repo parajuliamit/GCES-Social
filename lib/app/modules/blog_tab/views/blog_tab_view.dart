@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gces_social/app/routes/app_pages.dart';
+import 'package:gces_social/app/widgets/widgets.dart';
 
 import 'package:get/get.dart';
 
@@ -16,19 +18,30 @@ class BlogTabView extends GetView<BlogTabController> {
         ),
         floatingActionButton: FloatingActionButton(
           backgroundColor: kGreenishBlue,
-          onPressed: () {},
+          onPressed: () {
+            Get.toNamed(Routes.WRITE_BLOG);
+          },
           child: const Icon(Icons.add),
         ),
-        body: RefreshIndicator(
-          onRefresh: () async {},
-          child: Padding(
-            padding: const EdgeInsets.only(top: 8),
-            child: ListView.builder(
-                itemCount: 10,
-                itemBuilder: (context, index) {
-                  return BlogCard();
-                }),
-          ),
+        body: Obx(
+          () => controller.isLoading.value
+              ? const Center(child: Loading())
+              : controller.isError.value
+                  ? ErrorPage(
+                      controller.errorMessage.value, controller.getBlogs)
+                  : RefreshIndicator(
+                      onRefresh: () async {
+                        controller.getBlogs();
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 8),
+                        child: ListView.builder(
+                            itemCount: controller.blogs.length,
+                            itemBuilder: (context, index) {
+                              return BlogCard(controller.blogs[index]);
+                            }),
+                      ),
+                    ),
         ));
   }
 }

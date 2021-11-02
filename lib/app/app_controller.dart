@@ -1,19 +1,21 @@
+import 'package:gces_social/app/app_repository.dart';
 import 'package:get/get.dart';
 
 class AppController extends GetxController {
   final isLoggedIn = false.obs;
-
+  final appRepo = Get.find<AppRepository>();
   @override
   void onInit() {
     super.onInit();
   }
 
   Future<bool> checkLogIn() async {
-    await Future.delayed(const Duration(seconds: 2));
+    isLoggedIn(appRepo.getAuthRepository().isLoggedIn());
     return isLoggedIn.value;
   }
 
   void logout() {
+    appRepo.getAuthRepository().logout();
     isLoggedIn(false);
   }
 

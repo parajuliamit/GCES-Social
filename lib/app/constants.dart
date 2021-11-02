@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const baseUrl = 'http://4bd1-27-34-108-177.ngrok.io/api/';
+const baseUrl = 'http://06d5-27-34-108-177.ngrok.io/api/';
 
 final TextStyle kDrawerTitleText =
     TextStyle(fontSize: 17, color: Colors.grey[700]);
@@ -63,3 +63,25 @@ const kBlogInputDecoration = InputDecoration(
 );
 
 const TextStyle kInputTextStyle = TextStyle(color: Colors.white, fontSize: 20);
+
+String convertToAgo(DateTime input) {
+  Duration diff = DateTime.now().difference(input);
+
+  if (diff.inDays > 1) {
+    return '${diff.inDays} days ago';
+  } else if (diff.inDays == 1) {
+    return 'A day ago';
+  } else if (diff.inHours > 1) {
+    return '${diff.inHours} hours ago';
+  } else if (diff.inHours == 1) {
+    return '${diff.inHours} hour ago';
+  } else if (diff.inMinutes == 1) {
+    return '${diff.inMinutes} minute ago';
+  } else if (diff.inMinutes > 1) {
+    return '${diff.inMinutes} minutes ago';
+  } else if (diff.inSeconds > 1) {
+    return '${diff.inSeconds} seconds ago';
+  } else {
+    return 'Just now';
+  }
+}

@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/login/login_request.dart';
 import '../models/login/login_response.dart';
-import '../api/login_api.dart';
+import '../api/auth/login_api.dart';
 import '../local/login_reponse.dart';
 
 class AuthRepository {
@@ -18,5 +18,16 @@ class AuthRepository {
     loginResponse = await LoginApi(_dio).login(loginRequest);
 
     LoginResponseCache(_sharedPreferences).set(loginResponse);
+  }
+
+  void logout() {
+    LoginResponseCache(_sharedPreferences).delete();
+  }
+
+  bool isLoggedIn() {
+    if (_sharedPreferences.getString('loginResponseLocal') == null) {
+      return false;
+    }
+    return _sharedPreferences.getString('loginResponseLocal')!.isNotEmpty;
   }
 }

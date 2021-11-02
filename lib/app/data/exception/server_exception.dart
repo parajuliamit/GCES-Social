@@ -26,6 +26,8 @@ class ServerError implements Exception {
         break;
       case DioErrorType.other:
         _errorMessage = "Connection failed due to internet connection";
+        _errorMessage = error.error.toString();
+
         break;
       case DioErrorType.receiveTimeout:
         _errorMessage = "Receive timeout in connection";

@@ -24,4 +24,14 @@ class AuthenticationInterceptor extends Interceptor {
     }
     return super.onRequest(options, handler);
   }
+
+  // @override
+  // Future onError(DioError err, ErrorInterceptorHandler handler) {
+  //   if (err.response!.statusCode == 404) {
+  //     print(err.toString());
+  //   }
+  //   print(err.toString());
+  //   super.onError(err, handler);
+  //   return Future.value(err);
+  // }
 }

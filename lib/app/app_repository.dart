@@ -1,6 +1,7 @@
 // ignore_for_file: unnecessary_this
 
 import 'package:dio/dio.dart';
+import 'package:gces_social/app/data/repository/blog_repository.dart';
 import 'package:get/get.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -19,8 +20,10 @@ class AppRepository extends GetxService {
         baseUrl: baseUrl,
         receiveDataWhenStatusError: true,
         connectTimeout: 10 * 1000, // 10 seconds
-        receiveTimeout: 20 * 1000 // 20 seconds
-        );
+        receiveTimeout: 20 * 1000, // 20 seconds
+        validateStatus: (status) {
+          return status! <= 500;
+        });
 
     this
         ._dioClient
@@ -42,21 +45,7 @@ class AppRepository extends GetxService {
     return AuthRepository(_sharedPreferences, _dioClient);
   }
 
-  // CartRepository getCartRepository(){
-  //   return CartRepository(_sharedPreferences);
-  // }
-
-  // UserRepository getUserRepository() {
-  //   return UserRepository(_sharedPreferences, _dioClient);
-  // }
-  //
-  // ProductRepository getProductRepository() {
-  //   return ProductRepository(_sharedPreferences, _dioClient);
-  // }
-  //
-  //
-  // AuthRepository getAuthRepository() {
-  //   return AuthRepository(_sharedPreferences, _dioClient);
-  // }
-
+  BlogRepository getBlogRepository() {
+    return BlogRepository(_dioClient);
+  }
 }
