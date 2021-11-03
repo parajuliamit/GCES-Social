@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import 'package:gces_social/app/modules/announcements/bindings/announcements_binding.dart';
 import 'package:gces_social/app/modules/announcements/views/announcements_view.dart';
+import 'package:gces_social/app/modules/chat_screen/bindings/chat_screen_binding.dart';
+import 'package:gces_social/app/modules/chat_screen/views/chat_screen_view.dart';
 import 'package:gces_social/app/modules/home/bindings/home_binding.dart';
 import 'package:gces_social/app/modules/home/views/home_view.dart';
 import 'package:gces_social/app/modules/login_screen/bindings/login_screen_binding.dart';
@@ -58,6 +60,11 @@ class AppPages {
       name: _Paths.ANNOUNCEMENTS,
       page: () => AnnouncementsView(),
       binding: AnnouncementsBinding(),
+    ),
+    GetPage(
+      name: _Paths.CHAT_SCREEN,
+      page: () => ChatScreenView(),
+      binding: ChatScreenBinding(),
     ),
   ];
 }

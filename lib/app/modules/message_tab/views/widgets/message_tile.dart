@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gces_social/app/routes/app_pages.dart';
+import 'package:get/get.dart';
 
 class MessageTile extends StatelessWidget {
   const MessageTile({
@@ -11,7 +13,9 @@ class MessageTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Get.toNamed(Routes.CHAT_SCREEN);
+      },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 5),
         child: Column(

@@ -11,6 +11,7 @@ abstract class Routes {
   static const VIEW_BLOG = _Paths.VIEW_BLOG;
   static const WRITE_BLOG = _Paths.WRITE_BLOG;
   static const ANNOUNCEMENTS = _Paths.ANNOUNCEMENTS;
+  static const CHAT_SCREEN = _Paths.CHAT_SCREEN;
 }
 
 abstract class _Paths {
@@ -21,4 +22,5 @@ abstract class _Paths {
   static const VIEW_BLOG = '/view-blog';
   static const WRITE_BLOG = '/write-blog';
   static const ANNOUNCEMENTS = '/announcements';
+  static const CHAT_SCREEN = '/chat-screen';
 }
