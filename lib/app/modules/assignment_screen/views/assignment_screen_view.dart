@@ -11,7 +11,6 @@ class AssignmentScreenView extends GetView<AssignmentScreenController> {
   Widget build(BuildContext context) {
     DateTime currentTime = DateTime.now();
     return Scaffold(
-      backgroundColor: Colors.grey[200],
       appBar: AppBar(
         backgroundColor: Colors.red[800],
         title: const Text('Assignments'),
