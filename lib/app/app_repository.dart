@@ -2,6 +2,7 @@
 
 import 'package:dio/dio.dart';
 import 'package:gces_social/app/data/repository/blog_repository.dart';
+import 'package:gces_social/app/data/repository/suggestion_repository.dart';
 import 'package:get/get.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -52,5 +53,9 @@ class AppRepository extends GetxService {
 
   AnnouncementRepository getAnnouncementRepository() {
     return AnnouncementRepository(_dioClient);
+  }
+
+  SuggestionRepository getSuggestionRepository() {
+    return SuggestionRepository(_dioClient);
   }
 }

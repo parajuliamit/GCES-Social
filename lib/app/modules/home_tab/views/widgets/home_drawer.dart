@@ -6,6 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../constants.dart';
 import 'icon_text.dart';
+import 'suggestion_box.dart';
 
 class HomeDrawer extends StatelessWidget {
   const HomeDrawer({
@@ -22,30 +23,29 @@ class HomeDrawer extends StatelessWidget {
             child: Column(
               children: [
                 Stack(
-                  children: [
-                    const Align(
+                  children: const [
+                    Align(
                       alignment: Alignment.center,
                       child: CircleAvatar(
                         radius: 35,
                         backgroundColor: Colors.white,
-                        //TODO: Add actual user image
                         child: Icon(
                           Icons.account_circle_rounded,
                           size: 70,
                         ),
                       ),
                     ),
-                    Positioned(
-                        right: 20,
-                        top: 0,
-                        bottom: 0,
-                        child: IconButton(
-                          icon: Icon(
-                            Icons.border_color,
-                            color: Colors.blue[800],
-                          ),
-                          onPressed: () {},
-                        ))
+                    // Positioned(
+                    //     right: 20,
+                    //     top: 0,
+                    //     bottom: 0,
+                    //     child: IconButton(
+                    //       icon: Icon(
+                    //         Icons.border_color,
+                    //         color: Colors.blue[800],
+                    //       ),
+                    //       onPressed: () {},
+                    //     ))
                   ],
                 ),
                 const SizedBox(
@@ -64,7 +64,6 @@ class HomeDrawer extends StatelessWidget {
                 )
               ],
             ),
-            // decoration: BoxDecoration(color: kLightGreen),
           ),
           Container(
             padding: const EdgeInsets.all(15),
@@ -73,14 +72,15 @@ class HomeDrawer extends StatelessWidget {
               children: [
                 IconText(
                   onPress: () {
-                    print('Pressed');
+                    launch('https://pu.edu.np/noticetype/examination/');
                   },
                   text: 'Examination',
                   icon: Icons.article_rounded,
                 ),
                 IconText(
                   onPress: () {
-                    print('Pressed');
+                    launch(
+                        'https://github.com/theonlyNischal/Ultimate-Notes-Books-Resources-for-NCIT');
                   },
                   text: 'Reading Materials',
                   icon: Icons.menu_book_outlined,
@@ -97,9 +97,13 @@ class HomeDrawer extends StatelessWidget {
                 ),
                 IconText(
                   onPress: () {
-                    print('Pressed');
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return const SuggestionBox();
+                        });
                   },
-                  text: 'Suggestions',
+                  text: 'Suggestion Box',
                   icon: Icons.question_answer,
                 ),
                 IconText(
@@ -111,10 +115,10 @@ class HomeDrawer extends StatelessWidget {
                 ),
                 IconText(
                   onPress: () {
-                    print('Pressed');
+                    launch('mailto:gcessocial@gmail.com');
                   },
-                  text: 'About Us',
-                  icon: Icons.info,
+                  text: 'Contact Us',
+                  icon: Icons.email,
                 ),
                 const SizedBox(
                   height: 20,

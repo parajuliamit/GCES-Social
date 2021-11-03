@@ -37,7 +37,6 @@ class WriteBlogView extends GetView<WriteBlogController> {
                 maxLines: 20,
                 textInputAction: TextInputAction.done,
                 textAlign: TextAlign.left,
-                onChanged: (value) {},
                 decoration: kBlogInputDecoration.copyWith(
                     hintText: 'Your article here')),
             const SizedBox(
