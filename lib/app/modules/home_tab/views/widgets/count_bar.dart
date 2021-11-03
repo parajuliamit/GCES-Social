@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gces_social/app/modules/home/controllers/home_controller.dart';
+import 'package:gces_social/app/routes/app_pages.dart';
+import 'package:get/get.dart';
 
 import 'column_text.dart';
 
@@ -29,17 +32,23 @@ class CountBar extends StatelessWidget {
           ColumnText(
             count: 8,
             title: 'Notices',
-            onPress: () {},
+            onPress: () {
+              Get.toNamed(Routes.ANNOUNCEMENTS);
+            },
           ),
           ColumnText(
             count: 5,
             title: 'Assignments',
-            onPress: () {},
+            onPress: () {
+              Get.toNamed(Routes.ASSIGNMENT_SCREEN);
+            },
           ),
           ColumnText(
             count: 2,
             title: 'Messages',
-            onPress: () {},
+            onPress: () {
+              Get.find<HomeController>().goToMessage();
+            },
           ),
         ],
       ),

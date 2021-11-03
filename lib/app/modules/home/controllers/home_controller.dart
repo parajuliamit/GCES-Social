@@ -16,4 +16,10 @@ class HomeController extends GetxController {
     selectedIndex(index);
     update();
   }
+
+  void goToMessage() {
+    pageController.animateToPage(1,
+        duration: const Duration(milliseconds: 500), curve: Curves.ease);
+    changeIndex(1);
+  }
 }

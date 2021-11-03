@@ -16,7 +16,8 @@ class MessageTile extends StatelessWidget {
       onTap: () {
         Get.toNamed(Routes.CHAT_SCREEN);
       },
-      child: Padding(
+      child: Container(
+        color: Colors.transparent,
         padding: const EdgeInsets.symmetric(vertical: 5),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

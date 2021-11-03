@@ -18,30 +18,32 @@ class SuggestionBox extends StatelessWidget {
             )
           : AlertDialog(
               title: const Text('What could be improved?'),
-              content: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  TextField(
-                      controller: controller.suggestionController,
-                      textInputAction: TextInputAction.done,
-                      textAlign: TextAlign.left,
-                      keyboardType: TextInputType.multiline,
-                      style: const TextStyle(fontSize: 14),
-                      maxLines: 8,
-                      decoration: const InputDecoration(
-                          hintText: 'Type your suggestion here',
-                          border: OutlineInputBorder())),
-                  Row(
-                    children: [
-                      Checkbox(
-                          value: controller.isAnonymous.value,
-                          onChanged: (value) {
-                            controller.toggleAnonymous();
-                          }),
-                      const Text('Send as anonymous')
-                    ],
-                  ),
-                ],
+              content: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    TextField(
+                        controller: controller.suggestionController,
+                        textInputAction: TextInputAction.done,
+                        textAlign: TextAlign.left,
+                        keyboardType: TextInputType.multiline,
+                        style: const TextStyle(fontSize: 14),
+                        maxLines: 8,
+                        decoration: const InputDecoration(
+                            hintText: 'Type your suggestion here',
+                            border: OutlineInputBorder())),
+                    Row(
+                      children: [
+                        Checkbox(
+                            value: controller.isAnonymous.value,
+                            onChanged: (value) {
+                              controller.toggleAnonymous();
+                            }),
+                        const Text('Send as anonymous')
+                      ],
+                    ),
+                  ],
+                ),
               ),
               actions: [
                 TextButton(
