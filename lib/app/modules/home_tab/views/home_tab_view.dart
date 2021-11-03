@@ -85,7 +85,9 @@ class HomeTabView extends GetView<HomeTabController> {
         icon: Icons.menu_book,
         title: 'Assignments',
         color: Colors.red[800]!,
-        onPress: () {}),
+        onPress: () {
+          Get.toNamed(Routes.ASSIGNMENT_SCREEN);
+        }),
     Categories(
         icon: Icons.schedule,
         title: 'Class Routine',
@@ -97,6 +99,8 @@ class HomeTabView extends GetView<HomeTabController> {
         icon: Icons.fact_check_outlined,
         title: 'Attendance',
         color: Colors.blue,
-        onPress: () {}),
+        onPress: () {
+          Get.toNamed(Routes.ATTENDANCE_SCREEN);
+        }),
   ];
 }

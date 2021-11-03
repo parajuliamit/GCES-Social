@@ -2,6 +2,10 @@ import 'package:get/get.dart';
 
 import 'package:gces_social/app/modules/announcements/bindings/announcements_binding.dart';
 import 'package:gces_social/app/modules/announcements/views/announcements_view.dart';
+import 'package:gces_social/app/modules/assignment_screen/bindings/assignment_screen_binding.dart';
+import 'package:gces_social/app/modules/assignment_screen/views/assignment_screen_view.dart';
+import 'package:gces_social/app/modules/attendance_screen/bindings/attendance_screen_binding.dart';
+import 'package:gces_social/app/modules/attendance_screen/views/attendance_screen_view.dart';
 import 'package:gces_social/app/modules/chat_screen/bindings/chat_screen_binding.dart';
 import 'package:gces_social/app/modules/chat_screen/views/chat_screen_view.dart';
 import 'package:gces_social/app/modules/home/bindings/home_binding.dart';
@@ -72,6 +76,16 @@ class AppPages {
       name: _Paths.ROUTINE_SCREEN,
       page: () => RoutineScreenView(),
       binding: RoutineScreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.ASSIGNMENT_SCREEN,
+      page: () => AssignmentScreenView(),
+      binding: AssignmentScreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.ATTENDANCE_SCREEN,
+      page: () => AttendanceScreenView(),
+      binding: AttendanceScreenBinding(),
     ),
   ];
 }
