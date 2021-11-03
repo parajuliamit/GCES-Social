@@ -12,6 +12,7 @@ abstract class Routes {
   static const WRITE_BLOG = _Paths.WRITE_BLOG;
   static const ANNOUNCEMENTS = _Paths.ANNOUNCEMENTS;
   static const CHAT_SCREEN = _Paths.CHAT_SCREEN;
+  static const ROUTINE_SCREEN = _Paths.ROUTINE_SCREEN;
 }
 
 abstract class _Paths {
@@ -23,4 +24,5 @@ abstract class _Paths {
   static const WRITE_BLOG = '/write-blog';
   static const ANNOUNCEMENTS = '/announcements';
   static const CHAT_SCREEN = '/chat-screen';
+  static const ROUTINE_SCREEN = '/routine-screen';
 }

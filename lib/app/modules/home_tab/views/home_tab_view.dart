@@ -90,7 +90,9 @@ class HomeTabView extends GetView<HomeTabController> {
         icon: Icons.schedule,
         title: 'Class Routine',
         color: Colors.deepPurple,
-        onPress: () {}),
+        onPress: () {
+          Get.toNamed(Routes.ROUTINE_SCREEN);
+        }),
     Categories(
         icon: Icons.fact_check_outlined,
         title: 'Attendance',

@@ -10,6 +10,8 @@ import 'package:gces_social/app/modules/login_screen/bindings/login_screen_bindi
 import 'package:gces_social/app/modules/login_screen/views/login_screen_view.dart';
 import 'package:gces_social/app/modules/logout/bindings/logout_binding.dart';
 import 'package:gces_social/app/modules/logout/views/logout_view.dart';
+import 'package:gces_social/app/modules/routine_screen/bindings/routine_screen_binding.dart';
+import 'package:gces_social/app/modules/routine_screen/views/routine_screen_view.dart';
 import 'package:gces_social/app/modules/splash_screen/bindings/splash_screen_binding.dart';
 import 'package:gces_social/app/modules/splash_screen/views/splash_screen_view.dart';
 import 'package:gces_social/app/modules/view_blog/bindings/view_blog_binding.dart';
@@ -65,6 +67,11 @@ class AppPages {
       name: _Paths.CHAT_SCREEN,
       page: () => ChatScreenView(),
       binding: ChatScreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.ROUTINE_SCREEN,
+      page: () => RoutineScreenView(),
+      binding: RoutineScreenBinding(),
     ),
   ];
 }
