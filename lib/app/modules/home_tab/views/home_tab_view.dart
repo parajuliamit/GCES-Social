@@ -75,28 +75,26 @@ class HomeTabView extends GetView<HomeTabController> {
 
   final List<Categories> categories = [
     Categories(
-      icon: Icons.announcement,
-      title: 'Announcements',
-      color: Colors.lightGreen,
-      // screen: AnnouncementScreen()
-    ),
+        icon: Icons.announcement,
+        title: 'Announcements',
+        color: Colors.lightGreen,
+        onPress: () {
+          Get.toNamed(Routes.ANNOUNCEMENTS);
+        }),
     Categories(
-      icon: Icons.menu_book,
-      title: 'Assignments',
-      color: Colors.red[800]!,
-      // screen: AssignmentsScreen()
-    ),
+        icon: Icons.menu_book,
+        title: 'Assignments',
+        color: Colors.red[800]!,
+        onPress: () {}),
     Categories(
-      icon: Icons.schedule,
-      title: 'Class Routine',
-      color: Colors.deepPurple,
-      // screen: RoutineScreen()
-    ),
+        icon: Icons.schedule,
+        title: 'Class Routine',
+        color: Colors.deepPurple,
+        onPress: () {}),
     Categories(
-      icon: Icons.fact_check_outlined,
-      title: 'Attendance',
-      color: Colors.blue,
-      // screen: AttendanceScreen()
-    ),
+        icon: Icons.fact_check_outlined,
+        title: 'Attendance',
+        color: Colors.blue,
+        onPress: () {}),
   ];
 }

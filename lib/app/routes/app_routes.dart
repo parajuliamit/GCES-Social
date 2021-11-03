@@ -10,6 +10,7 @@ abstract class Routes {
   static const LOGIN_SCREEN = _Paths.LOGIN_SCREEN;
   static const VIEW_BLOG = _Paths.VIEW_BLOG;
   static const WRITE_BLOG = _Paths.WRITE_BLOG;
+  static const ANNOUNCEMENTS = _Paths.ANNOUNCEMENTS;
 }
 
 abstract class _Paths {
@@ -19,4 +20,5 @@ abstract class _Paths {
   static const LOGIN_SCREEN = '/login-screen';
   static const VIEW_BLOG = '/view-blog';
   static const WRITE_BLOG = '/write-blog';
+  static const ANNOUNCEMENTS = '/announcements';
 }

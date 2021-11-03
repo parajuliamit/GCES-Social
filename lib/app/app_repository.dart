@@ -8,6 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'constants.dart';
 import 'data/interceptors/authentication_interceptor.dart';
+import 'data/repository/announcement_repository.dart';
 import 'data/repository/auth_repository.dart';
 
 class AppRepository extends GetxService {
@@ -47,5 +48,9 @@ class AppRepository extends GetxService {
 
   BlogRepository getBlogRepository() {
     return BlogRepository(_dioClient);
+  }
+
+  AnnouncementRepository getAnnouncementRepository() {
+    return AnnouncementRepository(_dioClient);
   }
 }

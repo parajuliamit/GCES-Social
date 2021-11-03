@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import 'package:gces_social/app/modules/announcements/bindings/announcements_binding.dart';
+import 'package:gces_social/app/modules/announcements/views/announcements_view.dart';
 import 'package:gces_social/app/modules/home/bindings/home_binding.dart';
 import 'package:gces_social/app/modules/home/views/home_view.dart';
 import 'package:gces_social/app/modules/login_screen/bindings/login_screen_binding.dart';
@@ -51,6 +53,11 @@ class AppPages {
       name: _Paths.WRITE_BLOG,
       page: () => WriteBlogView(),
       binding: WriteBlogBinding(),
+    ),
+    GetPage(
+      name: _Paths.ANNOUNCEMENTS,
+      page: () => AnnouncementsView(),
+      binding: AnnouncementsBinding(),
     ),
   ];
 }

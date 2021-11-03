@@ -9,14 +9,14 @@ class ItemTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: categories.onPress,
       child: Container(
         decoration: BoxDecoration(boxShadow: [
           BoxShadow(
               color: Colors.grey.withOpacity(0.5),
               spreadRadius: 1,
               blurRadius: 2,
-              offset: Offset(0, 2)),
+              offset: const Offset(0, 2)),
         ], color: Colors.white, borderRadius: BorderRadius.circular(10)),
         margin: const EdgeInsets.all(10),
         child: ClipRRect(

@@ -4,10 +4,10 @@ class Categories {
   String title;
   IconData icon;
   Color color;
-  Widget? screen;
+  VoidCallback onPress;
 
   Categories(
-      {this.screen,
+      {required this.onPress,
       required this.title,
       required this.icon,
       required this.color});

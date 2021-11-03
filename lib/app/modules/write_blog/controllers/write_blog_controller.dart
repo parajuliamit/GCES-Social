@@ -46,7 +46,7 @@ class WriteBlogController extends GetxController {
       Get.rawSnackbar(
           title: 'Successfully posted!',
           message: 'Waiting for admin\'s approval.',
-          duration: const Duration(seconds: 2));
+          duration: const Duration(seconds: 4));
       return;
     } catch (e) {
       print(e);
