@@ -9,7 +9,7 @@ import '../../message_tab/controllers/message_tab_controller.dart';
 class HomeBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<HomeController>(() => HomeController());
+    Get.put<HomeController>(HomeController());
     Get.lazyPut<HomeTabController>(() => HomeTabController());
     Get.lazyPut<AnnouncementsController>(() => AnnouncementsController());
     Get.lazyPut<BlogTabController>(() => BlogTabController());

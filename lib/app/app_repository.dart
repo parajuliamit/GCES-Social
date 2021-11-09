@@ -11,6 +11,7 @@ import 'constants.dart';
 import 'data/interceptors/authentication_interceptor.dart';
 import 'data/repository/announcement_repository.dart';
 import 'data/repository/auth_repository.dart';
+import 'data/repository/routine_repository.dart';
 
 class AppRepository extends GetxService {
   final Dio _dioClient;
@@ -57,5 +58,9 @@ class AppRepository extends GetxService {
 
   SuggestionRepository getSuggestionRepository() {
     return SuggestionRepository(_dioClient);
+  }
+
+  RoutineRepository getRoutineRepository() {
+    return RoutineRepository(_dioClient);
   }
 }

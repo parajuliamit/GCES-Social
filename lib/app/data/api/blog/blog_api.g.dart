@@ -40,7 +40,7 @@ class _BlogApi implements BlogApi {
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<BlogDetailResponse>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/blogs/$blogId/',
+                .compose(_dio.options, 'blogs/$blogId/',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = BlogDetailResponse.fromJson(_result.data!);

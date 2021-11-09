@@ -15,7 +15,7 @@ abstract class BlogApi {
   @GET("blogs/")
   Future<List<BlogResponse>> getBlogs();
 
-  @GET("/blogs/{blogId}/")
+  @GET("blogs/{blogId}/")
   Future<BlogDetailResponse> getBlogDetail(@Path("blogId") String blogId);
 
   @POST("blogs/create/")

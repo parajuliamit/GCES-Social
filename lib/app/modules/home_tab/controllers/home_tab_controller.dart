@@ -10,6 +10,7 @@ class HomeTabController extends GetxController {
   final isLoading = false.obs;
   late final TextEditingController suggestionController;
   final appRepo = Get.find<AppRepository>();
+
   @override
   void onInit() {
     super.onInit();

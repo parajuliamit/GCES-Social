@@ -9,6 +9,6 @@ part 'announcement_api.g.dart';
 abstract class AnnouncementApi {
   factory AnnouncementApi(Dio dio) = _AnnouncementApi;
 
-  @GET("/announcements/")
+  @GET("announcements/")
   Future<List<Announcement>> getAnnouncements();
 }

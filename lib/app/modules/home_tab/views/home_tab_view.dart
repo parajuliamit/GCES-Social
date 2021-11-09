@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gces_social/app/data/models/categories.dart';
+import 'package:gces_social/app/data/models/routine.dart';
+import 'package:gces_social/app/modules/home/controllers/home_controller.dart';
 import 'package:gces_social/app/modules/home_tab/views/widgets/suggestion_box.dart';
 import 'package:gces_social/app/routes/app_pages.dart';
 import 'package:intl/intl.dart';
@@ -11,6 +13,9 @@ import 'widgets/widgets.dart';
 import '../controllers/home_tab_controller.dart';
 
 class HomeTabView extends GetView<HomeTabController> {
+  final List<Period>? todaysClasses;
+
+  HomeTabView(this.todaysClasses);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,12 +74,26 @@ class HomeTabView extends GetView<HomeTabController> {
           const SizedBox(height: 10),
           SizedBox(
             height: 120,
-            child: ListView.builder(
-                itemCount: 5,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) {
-                  return const ScheduleContainer();
-                }),
+            child: todaysClasses == null
+                ? Container(
+                    height: 120,
+                    padding: const EdgeInsets.all(15),
+                    decoration: BoxDecoration(border: Border.all()),
+                    child: const Text('Unable to load classes.'),
+                  )
+                : todaysClasses!.isEmpty
+                    ? Container(
+                        height: 120,
+                        padding: const EdgeInsets.all(15),
+                        decoration: BoxDecoration(border: Border.all()),
+                        child: const Text('No classes for today.'),
+                      )
+                    : ListView.builder(
+                        itemCount: todaysClasses!.length,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          return ScheduleContainer(todaysClasses![index]);
+                        }),
           ),
           const SizedBox(
             height: 10,
