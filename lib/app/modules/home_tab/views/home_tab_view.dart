@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gces_social/app/data/models/categories.dart';
 import 'package:gces_social/app/data/models/routine.dart';
-import 'package:gces_social/app/modules/home/controllers/home_controller.dart';
+import 'package:gces_social/app/modules/home_tab/views/widgets/quotes.dart';
 import 'package:gces_social/app/modules/home_tab/views/widgets/suggestion_box.dart';
 import 'package:gces_social/app/routes/app_pages.dart';
 import 'package:intl/intl.dart';
 import 'package:get/get.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../constants.dart';
 import 'widgets/widgets.dart';
@@ -44,15 +43,7 @@ class HomeTabView extends GetView<HomeTabController> {
                 SizedBox(
                   height: 5,
                 ),
-                Text(
-                  '"By failing to prepare, you are preparing to fail."',
-                  //https://zenquotes.io/api/today
-                  style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 18,
-                      fontStyle: FontStyle.italic,
-                      color: Colors.blueGrey),
-                ),
+                Quotes()
               ],
             ),
           ),
@@ -78,15 +69,20 @@ class HomeTabView extends GetView<HomeTabController> {
                 ? Container(
                     height: 120,
                     padding: const EdgeInsets.all(15),
-                    decoration: BoxDecoration(border: Border.all()),
-                    child: const Text('Unable to load classes.'),
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
+                    decoration:
+                        BoxDecoration(border: Border.all(color: Colors.grey)),
+                    child: const Center(child: Text('Unable to load classes.')),
                   )
                 : todaysClasses!.isEmpty
                     ? Container(
                         height: 120,
                         padding: const EdgeInsets.all(15),
-                        decoration: BoxDecoration(border: Border.all()),
-                        child: const Text('No classes for today.'),
+                        margin: const EdgeInsets.symmetric(horizontal: 20),
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey)),
+                        child:
+                            const Center(child: Text('No classes for today.')),
                       )
                     : ListView.builder(
                         itemCount: todaysClasses!.length,
