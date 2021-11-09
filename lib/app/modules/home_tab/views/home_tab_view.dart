@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gces_social/app/data/models/categories.dart';
+import 'package:gces_social/app/modules/home_tab/views/widgets/suggestion_box.dart';
 import 'package:gces_social/app/routes/app_pages.dart';
 import 'package:intl/intl.dart';
 import 'package:get/get.dart';
@@ -20,13 +21,37 @@ class HomeTabView extends GetView<HomeTabController> {
       body: ListView(
         scrollDirection: Axis.vertical,
         children: [
-          const SizedBox(
-            height: 10,
+          // const SizedBox(
+          //   height: 10,
+          // ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const [
+                Text(
+                  'Today\'s Inspiration :',
+                  style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16,
+                      color: Colors.grey),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  '"By failing to prepare, you are preparing to fail."',
+                  //https://zenquotes.io/api/today
+                  style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 18,
+                      fontStyle: FontStyle.italic,
+                      color: Colors.blueGrey),
+                ),
+              ],
+            ),
           ),
-          const CountBar(),
-          const SizedBox(
-            height: 10,
-          ),
+          // const CountBar(),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Text(
@@ -74,20 +99,13 @@ class HomeTabView extends GetView<HomeTabController> {
   }
 
   final List<Categories> categories = [
-    Categories(
-        icon: Icons.announcement,
-        title: 'Announcements',
-        color: Colors.lightGreen,
-        onPress: () {
-          Get.toNamed(Routes.ANNOUNCEMENTS);
-        }),
-    Categories(
-        icon: Icons.menu_book,
-        title: 'Assignments',
-        color: Colors.red[800]!,
-        onPress: () {
-          Get.toNamed(Routes.ASSIGNMENT_SCREEN);
-        }),
+    // Categories(
+    //     icon: Icons.announcement,
+    //     title: 'Announcements',
+    //     color: Colors.lightGreen,
+    //     onPress: () {
+    //       Get.toNamed(Routes.ANNOUNCEMENTS);
+    //     }),
     Categories(
         icon: Icons.schedule,
         title: 'Class Routine',
@@ -96,11 +114,31 @@ class HomeTabView extends GetView<HomeTabController> {
           Get.toNamed(Routes.ROUTINE_SCREEN);
         }),
     Categories(
+        icon: Icons.menu_book,
+        title: 'Assignments',
+        color: Colors.red[800]!,
+        onPress: () {
+          Get.toNamed(Routes.ASSIGNMENT_SCREEN);
+        }),
+
+    Categories(
         icon: Icons.fact_check_outlined,
         title: 'Attendance',
         color: Colors.blue,
         onPress: () {
           Get.toNamed(Routes.ATTENDANCE_SCREEN);
         }),
+    Categories(
+      icon: Icons.question_answer_outlined,
+      title: 'Suggestion Box',
+      color: Colors.lightGreen,
+      onPress: () {
+        showDialog(
+            context: Get.context!,
+            builder: (context) {
+              return const SuggestionBox();
+            });
+      },
+    ),
   ];
 }

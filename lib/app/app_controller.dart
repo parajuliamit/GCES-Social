@@ -1,4 +1,4 @@
-import 'package:gces_social/app/app_repository.dart';
+import 'app_repository.dart';
 import 'package:get/get.dart';
 
 class AppController extends GetxController {

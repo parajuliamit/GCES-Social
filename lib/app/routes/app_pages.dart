@@ -1,13 +1,13 @@
 import 'package:get/get.dart';
 
-import 'package:gces_social/app/modules/announcements/bindings/announcements_binding.dart';
-import 'package:gces_social/app/modules/announcements/views/announcements_view.dart';
+// import 'package:gces_social/app/modules/announcements/bindings/announcements_binding.dart';
+// import 'package:gces_social/app/modules/announcements/views/announcements_view.dart';
 import 'package:gces_social/app/modules/assignment_screen/bindings/assignment_screen_binding.dart';
 import 'package:gces_social/app/modules/assignment_screen/views/assignment_screen_view.dart';
 import 'package:gces_social/app/modules/attendance_screen/bindings/attendance_screen_binding.dart';
 import 'package:gces_social/app/modules/attendance_screen/views/attendance_screen_view.dart';
-import 'package:gces_social/app/modules/chat_screen/bindings/chat_screen_binding.dart';
-import 'package:gces_social/app/modules/chat_screen/views/chat_screen_view.dart';
+// import 'package:gces_social/app/modules/chat_screen/bindings/chat_screen_binding.dart';
+// import 'package:gces_social/app/modules/chat_screen/views/chat_screen_view.dart';
 import 'package:gces_social/app/modules/home/bindings/home_binding.dart';
 import 'package:gces_social/app/modules/home/views/home_view.dart';
 import 'package:gces_social/app/modules/login_screen/bindings/login_screen_binding.dart';
@@ -62,16 +62,16 @@ class AppPages {
       page: () => WriteBlogView(),
       binding: WriteBlogBinding(),
     ),
-    GetPage(
-      name: _Paths.ANNOUNCEMENTS,
-      page: () => AnnouncementsView(),
-      binding: AnnouncementsBinding(),
-    ),
-    GetPage(
-      name: _Paths.CHAT_SCREEN,
-      page: () => ChatScreenView(),
-      binding: ChatScreenBinding(),
-    ),
+    // GetPage(
+    //   name: _Paths.ANNOUNCEMENTS,
+    //   page: () => AnnouncementsView(),
+    //   binding: AnnouncementsBinding(),
+    // ),
+    // GetPage(
+    //   name: _Paths.CHAT_SCREEN,
+    //   page: () => ChatScreenView(),
+    //   binding: ChatScreenBinding(),
+    // ),
     GetPage(
       name: _Paths.ROUTINE_SCREEN,
       page: () => RoutineScreenView(),

@@ -95,17 +95,17 @@ class HomeDrawer extends StatelessWidget {
                   text: 'Change Password',
                   icon: Icons.settings,
                 ),
-                IconText(
-                  onPress: () {
-                    showDialog(
-                        context: context,
-                        builder: (context) {
-                          return const SuggestionBox();
-                        });
-                  },
-                  text: 'Suggestion Box',
-                  icon: Icons.question_answer,
-                ),
+                // IconText(
+                //   onPress: () {
+                //     showDialog(
+                //         context: context,
+                //         builder: (context) {
+                //           return const SuggestionBox();
+                //         });
+                //   },
+                //   text: 'Suggestion Box',
+                //   icon: Icons.question_answer,
+                // ),
                 IconText(
                   onPress: () {
                     launch('https://gces.edu.np');

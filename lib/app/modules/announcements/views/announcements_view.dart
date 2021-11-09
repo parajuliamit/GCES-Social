@@ -13,7 +13,7 @@ class AnnouncementsView extends GetView<AnnouncementsController> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Announcements'),
-        backgroundColor: Colors.lightGreen,
+        // backgroundColor: Colors.lightGreen,
       ),
       body: DefaultTabController(
         length: 4,

@@ -1,3 +1,4 @@
+import 'package:gces_social/app/modules/announcements/controllers/announcements_controller.dart';
 import 'package:get/get.dart';
 
 import '../controllers/home_controller.dart';
@@ -10,7 +11,7 @@ class HomeBinding extends Bindings {
   void dependencies() {
     Get.lazyPut<HomeController>(() => HomeController());
     Get.lazyPut<HomeTabController>(() => HomeTabController());
-    Get.lazyPut<MessageTabController>(() => MessageTabController());
+    Get.lazyPut<AnnouncementsController>(() => AnnouncementsController());
     Get.lazyPut<BlogTabController>(() => BlogTabController());
   }
 }

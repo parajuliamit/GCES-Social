@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gces_social/app/constants.dart';
 
 import 'package:get/get.dart';
 
@@ -10,6 +11,7 @@ class HomeView extends GetView<HomeController> {
     return GetBuilder<HomeController>(builder: (_) {
       return Scaffold(
         bottomNavigationBar: BottomNavigationBar(
+          selectedItemColor: kGreenishBlue,
           currentIndex: _.selectedIndex.value,
           onTap: (index) {
             _.pageController.animateToPage(index,
@@ -23,9 +25,13 @@ class HomeView extends GetView<HomeController> {
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.mark_chat_unread_rounded),
-              label: 'Message',
+              icon: Icon(Icons.announcement),
+              label: 'Notices',
             ),
+            // BottomNavigationBarItem(
+            //   icon: Icon(Icons.mark_chat_unread_rounded),
+            //   label: 'Message',
+            // ),
             BottomNavigationBarItem(
               icon: Icon(Icons.article),
               label: 'Blog',

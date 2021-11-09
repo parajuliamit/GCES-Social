@@ -10,8 +10,8 @@ abstract class Routes {
   static const LOGIN_SCREEN = _Paths.LOGIN_SCREEN;
   static const VIEW_BLOG = _Paths.VIEW_BLOG;
   static const WRITE_BLOG = _Paths.WRITE_BLOG;
-  static const ANNOUNCEMENTS = _Paths.ANNOUNCEMENTS;
-  static const CHAT_SCREEN = _Paths.CHAT_SCREEN;
+  // static const ANNOUNCEMENTS = _Paths.ANNOUNCEMENTS;
+  // static const CHAT_SCREEN = _Paths.CHAT_SCREEN;
   static const ROUTINE_SCREEN = _Paths.ROUTINE_SCREEN;
   static const ASSIGNMENT_SCREEN = _Paths.ASSIGNMENT_SCREEN;
   static const ATTENDANCE_SCREEN = _Paths.ATTENDANCE_SCREEN;
@@ -24,8 +24,8 @@ abstract class _Paths {
   static const LOGIN_SCREEN = '/login-screen';
   static const VIEW_BLOG = '/view-blog';
   static const WRITE_BLOG = '/write-blog';
-  static const ANNOUNCEMENTS = '/announcements';
-  static const CHAT_SCREEN = '/chat-screen';
+  // static const ANNOUNCEMENTS = '/announcements';
+  // static const CHAT_SCREEN = '/chat-screen';
   static const ROUTINE_SCREEN = '/routine-screen';
   static const ASSIGNMENT_SCREEN = '/assignment-screen';
   static const ATTENDANCE_SCREEN = '/attendance-screen';

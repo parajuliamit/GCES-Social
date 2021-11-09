@@ -5,7 +5,6 @@ import 'package:gces_social/app/data/exception/server_exception.dart';
 import 'package:gces_social/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 import '../../../data/models/login/login_request.dart';
-import '../../../data/models/login/login_response.dart';
 
 class LoginScreenController extends GetxController {
   final appRepo = Get.find<AppRepository>();
