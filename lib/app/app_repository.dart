@@ -10,6 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'constants.dart';
 import 'data/interceptors/authentication_interceptor.dart';
 import 'data/repository/announcement_repository.dart';
+import 'data/repository/assignment_repository.dart';
 import 'data/repository/auth_repository.dart';
 import 'data/repository/routine_repository.dart';
 
@@ -17,6 +18,7 @@ class AppRepository extends GetxService {
   final Dio _dioClient;
   final SharedPreferences _sharedPreferences;
 
+  get dio => this._dioClient;
   AppRepository(this._dioClient, this._sharedPreferences) {
     // Configure dio
     this._dioClient.options = BaseOptions(
@@ -62,5 +64,9 @@ class AppRepository extends GetxService {
 
   RoutineRepository getRoutineRepository() {
     return RoutineRepository(_dioClient);
+  }
+
+  AssignmentRepository getAssignmentRepository() {
+    return AssignmentRepository(_dioClient);
   }
 }

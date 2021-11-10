@@ -8,7 +8,7 @@ import '../../../app_repository.dart';
 
 class RoutineScreenController extends GetxController {
   int weekDay = DateTime.now().weekday;
-  int selectedIndex = 0;
+  final selectedIndex = 0.obs;
 
   final isLoading = false.obs;
   final isError = false.obs;
@@ -27,8 +27,9 @@ class RoutineScreenController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    selectedIndex = weekDay == 6 || weekDay == 7 ? 0 : weekDay;
-    pageController = PageController(initialPage: selectedIndex);
+    int index = weekDay == 6 || weekDay == 7 ? 0 : weekDay;
+    pageController = PageController(initialPage: index);
+    selectedIndex(index);
   }
 
   void loadRoutine() async {
@@ -57,14 +58,14 @@ class RoutineScreenController extends GetxController {
   }
 
   void changeIndex(int index) {
-    selectedIndex = index;
+    selectedIndex(index);
     pageController.animateToPage(index,
         duration: const Duration(milliseconds: 300), curve: Curves.linear);
     update();
   }
 
   void pageChange(int index) {
-    selectedIndex = index;
+    selectedIndex(index);
     update();
   }
 
@@ -99,7 +100,7 @@ class RoutineScreenController extends GetxController {
                                     routine!.day[i].period[index].time
                                         .split('-')[0],
                                     // '6:00 AM',
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         color: Colors.grey, fontSize: 12),
                                   ),
                                   const Text('TO',

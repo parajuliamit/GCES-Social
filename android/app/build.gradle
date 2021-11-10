@@ -43,6 +43,9 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        // configurations.all {
+        //     resolutionStrategy { force 'androidx.core:core-ktx:1.6.0' }
+        // }
         applicationId "com.example.gces_social"
         minSdkVersion 16
         targetSdkVersion 30

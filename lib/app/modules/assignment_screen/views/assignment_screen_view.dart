@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gces_social/app/data/models/assignments.dart';
+import 'package:gces_social/app/data/models/assignment/assignment.dart';
+import 'package:gces_social/app/widgets/widgets.dart';
 
 import 'package:get/get.dart';
 
@@ -45,45 +46,43 @@ class AssignmentScreenView extends GetView<AssignmentScreenController> {
                     ),
                   ]),
             ),
-            Expanded(
-              child: TabBarView(children: [
-                ListView.builder(
-                    itemCount: 10,
-                    itemBuilder: (context, index) {
-                      return AssignmentsTile(
-                        assignments: Assignments(
-                            title: 'Chapter 3-4 solve questions',
-                            subject: 'System Programming',
-                            deadline: currentTime,
-                            status: 1,
-                            details: 'COmplete your job asap'),
-                      );
-                    }),
-                ListView.builder(
-                    itemCount: 10,
-                    itemBuilder: (context, index) {
-                      return AssignmentsTile(
-                        assignments: Assignments(
-                            title: 'Chapter 3-4 solve questions',
-                            subject: 'System Programming',
-                            deadline: DateTime.now(),
-                            status: 1,
-                            details: 'COmplete your job asap'),
-                      );
-                    }),
-                ListView.builder(
-                    itemCount: 10,
-                    itemBuilder: (context, index) {
-                      return AssignmentsTile(
-                        assignments: Assignments(
-                            title: 'Chapter 3-4 solve questions',
-                            subject: 'System Programming',
-                            deadline: DateTime.now(),
-                            status: 3,
-                            details: 'Complete your job asap'),
-                      );
-                    }),
-              ]),
+            Obx(
+              () => Expanded(
+                child: controller.isLoading.isTrue
+                    ? const Center(
+                        child: Loading(),
+                      )
+                    : controller.isError.isTrue
+                        ? ErrorPage('Unable to load assignments.',
+                            controller.loadAssignments)
+                        : controller.allAssignments.isEmpty
+                            ? const Center(
+                                child:
+                                    Text('There are no assignments for you.'),
+                              )
+                            : TabBarView(children: [
+                                ListView.builder(
+                                    itemCount: controller.allAssignments.length,
+                                    itemBuilder: (context, index) {
+                                      return AssignmentsTile(
+                                          assignment:
+                                              controller.allAssignments[index]);
+                                    }),
+                                ListView.builder(
+                                    itemCount: controller.todo.length,
+                                    itemBuilder: (context, index) {
+                                      return AssignmentsTile(
+                                          assignment: controller.todo[index]);
+                                    }),
+                                ListView.builder(
+                                    itemCount: controller.submitted.length,
+                                    itemBuilder: (context, index) {
+                                      return AssignmentsTile(
+                                          assignment:
+                                              controller.submitted[index]);
+                                    }),
+                              ]),
+              ),
             ),
           ],
         ),

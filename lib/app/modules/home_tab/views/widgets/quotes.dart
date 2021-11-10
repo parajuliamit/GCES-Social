@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,15 @@ class Quotes extends StatefulWidget {
 }
 
 class _QuotesState extends State<Quotes> {
+  final List<String> quotes = [
+    '"You will never do anything in this world without courage. It is the greatest quality of the mind next to honor." - James Allen',
+    '"Don\'t seek, don\'t avoid, don\'t expect. Take what comes and be happy." - Maxime Lagace',
+    '"We know nothing of tomorrow, our business is to be good and happy today." - Sydney Smith',
+    '"A goal without plan is just a wish." - Benjamin Franklin',
+    '"The only thing we have to fear is fear itself." - Franklin D. Roosevelt',
+    '"Each day your life grows a day shorter. Make every move count." - Ming-Dao Deng'
+        '"Inspire yourself to be great. Being good isn\'t good enough." - Gurbaksh Chahal'
+  ];
   String? quote;
   void getQuote() async {
     try {
@@ -33,7 +43,7 @@ class _QuotesState extends State<Quotes> {
   @override
   Widget build(BuildContext context) {
     return Text(
-      quote ?? '"A goal without plan is just a wish."',
+      quote ?? quotes[Random().nextInt(quotes.length)],
       //https://zenquotes.io/api/today
       style: const TextStyle(
           fontWeight: FontWeight.w600,

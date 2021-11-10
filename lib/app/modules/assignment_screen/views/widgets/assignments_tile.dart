@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:gces_social/app/data/models/assignments.dart';
+import 'package:gces_social/app/data/models/assignment/assignment.dart';
+import 'package:gces_social/app/routes/app_pages.dart';
+import 'package:get/get.dart';
 
 class AssignmentsTile extends StatelessWidget {
-  final Assignments assignments;
+  final Assignment assignment;
 
-  const AssignmentsTile({Key? key, required this.assignments})
-      : super(key: key);
+  const AssignmentsTile({Key? key, required this.assignment}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Get.toNamed(Routes.VIEW_ASSIGNMENT, parameters: {
+          "id": assignment.id.toString(),
+          "status": assignment.status
+        });
+      },
       child: Container(
         padding: const EdgeInsets.all(10),
         margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
@@ -26,18 +32,14 @@ class AssignmentsTile extends StatelessWidget {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   decoration: BoxDecoration(
-                      color: assignments.status == 1
-                          ? Colors.red
-                          : assignments.status == 2
+                      color: assignment.status == 'APPROVED'
+                          ? Colors.green
+                          : assignment.status == 'PENDING'
                               ? Colors.blue
-                              : Colors.green,
+                              : Colors.red,
                       borderRadius: BorderRadius.circular(5)),
                   child: Text(
-                    assignments.status == 1
-                        ? 'TODO'
-                        : assignments.status == 2
-                            ? 'PENDING'
-                            : 'APPROVED',
+                    assignment.status,
                     style: const TextStyle(color: Colors.white),
                   ),
                 ),
@@ -45,7 +47,7 @@ class AssignmentsTile extends StatelessWidget {
                   height: 5,
                 ),
                 Text(
-                  assignments.subject,
+                  assignment.title,
                   style: const TextStyle(
                       fontWeight: FontWeight.w700, fontSize: 16),
                 ),
@@ -53,14 +55,14 @@ class AssignmentsTile extends StatelessWidget {
                   height: 5,
                 ),
                 Text(
-                  assignments.title,
-                  style: const TextStyle(fontSize: 16),
+                  assignment.user,
+                  style: const TextStyle(fontSize: 14),
                 ),
                 const SizedBox(
                   height: 5,
                 ),
                 Text(
-                  'Deadline: ${assignments.deadline}',
+                  'Deadline: ${assignment.submissionDate}',
                   style: const TextStyle(
                       color: Colors.grey,
                       fontStyle: FontStyle.italic,
