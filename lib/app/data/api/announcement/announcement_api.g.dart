@@ -14,7 +14,7 @@ class _AnnouncementApi implements AnnouncementApi {
   String? baseUrl;
 
   @override
-  Future<List<Announcement>> getAnnouncements() async {
+  Future<List<Announcement>> getAnnouncements(batch) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -22,7 +22,7 @@ class _AnnouncementApi implements AnnouncementApi {
     final _result = await _dio.fetch<List<dynamic>>(
         _setStreamType<List<Announcement>>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, 'announcements/',
+                .compose(_dio.options, 'announcements/$batch/',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!

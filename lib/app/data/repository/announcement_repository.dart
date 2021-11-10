@@ -8,7 +8,7 @@ class AnnouncementRepository {
 
   AnnouncementRepository(this._dio);
 
-  Future<List<Announcement>> getAnnouncements() async {
-    return await AnnouncementApi(_dio).getAnnouncements();
+  Future<List<Announcement>> getAnnouncements(String batch) async {
+    return await AnnouncementApi(_dio).getAnnouncements(batch);
   }
 }
