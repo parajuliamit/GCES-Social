@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
+import 'package:get/get.dart';
 
+import '../../app_controller.dart';
 import '../models/assignment/view_assignment.dart';
 import '../api/assignment/assignment_api.dart';
 import '../models/assignment/assignment.dart';
@@ -9,8 +11,9 @@ class AssignmentRepository {
 
   AssignmentRepository(this._dio);
 
-  Future<List<Assignment>> getAssignments(String batch) async {
-    return await AssignmentApi(_dio).getAssignments(batch);
+  Future<List<Assignment>> getAssignments() async {
+    return await AssignmentApi(_dio)
+        .getAssignments(Get.find<AppController>().batch);
   }
 
   Future<ViewAssignment> getAssignment(String id) async {

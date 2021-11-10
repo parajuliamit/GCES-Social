@@ -36,9 +36,8 @@ class RoutineScreenController extends GetxController {
     isError(false);
     isLoading(true);
     try {
-      routine = await Get.find<AppRepository>()
-          .getRoutineRepository()
-          .getRoutine('2017SE');
+      routine =
+          await Get.find<AppRepository>().getRoutineRepository().getRoutine();
       Get.find<HomeController>().updateRoutine(routine);
     } catch (e) {
       print(e);

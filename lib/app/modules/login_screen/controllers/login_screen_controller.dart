@@ -14,6 +14,8 @@ class LoginScreenController extends GetxController {
 
   final isLoading = false.obs;
 
+  final showPassword = false.obs;
+
   void login() async {
     // Get.offAllNamed(Routes.HOME);
     // return;
@@ -39,7 +41,7 @@ class LoginScreenController extends GetxController {
 
       var routine;
       try {
-        routine = await appRepo.getRoutineRepository().getRoutine('2017SE');
+        routine = await appRepo.getRoutineRepository().getRoutine();
       } catch (e) {
         print(e);
       }
@@ -57,5 +59,9 @@ class LoginScreenController extends GetxController {
       Get.rawSnackbar(message: errorText, duration: const Duration(seconds: 3));
     }
     isLoading(false);
+  }
+
+  void changeVisibility() {
+    showPassword.toggle();
   }
 }

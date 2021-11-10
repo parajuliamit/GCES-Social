@@ -17,6 +17,8 @@ abstract class Routes {
   static const ATTENDANCE_SCREEN = _Paths.ATTENDANCE_SCREEN;
   static const VIEW_ASSIGNMENT = _Paths.VIEW_ASSIGNMENT;
   static const CHANGE_PASSWORD = _Paths.CHANGE_PASSWORD;
+  static const REGISTER = _Paths.REGISTER;
+  static const VERIFY_SCREEN = _Paths.VERIFY_SCREEN;
 }
 
 abstract class _Paths {
@@ -33,4 +35,6 @@ abstract class _Paths {
   static const ATTENDANCE_SCREEN = '/attendance-screen';
   static const VIEW_ASSIGNMENT = '/view-assignment';
   static const CHANGE_PASSWORD = '/change-password';
+  static const REGISTER = '/register';
+  static const VERIFY_SCREEN = '/verify-screen';
 }

@@ -12,12 +12,21 @@ class AuthenticationInterceptor extends Interceptor {
   @override
   Future onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
+    try {
+      if (options.path == 'users/verify/') {
+        return super.onRequest(options, handler);
+      } else if (options.path.split('/')[2] == 'resend') {
+        return super.onRequest(options, handler);
+      }
+    } catch (e) {
+      print(e);
+    }
     var token = await LoginResponseCache(this._sharedPreferences).get();
 
     if (token == null) {
       return super.onRequest(options, handler);
     }
-    print(token.access);
+    print(token.token);
 
     if (token.token.isNotEmpty) {
       options.headers.addAll({"Authorization": "Bearer ${token.token}"});

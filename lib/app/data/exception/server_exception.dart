@@ -38,6 +38,7 @@ class ServerError implements Exception {
         _errorMessage =
             "Received invalid status code: ${error.response!.statusCode}";
         try {
+          _errorMessage = error.response!.toString();
           if (error.response!.data["detail"] != null) {
             _errorMessage = error.response!.data["detail"];
           }

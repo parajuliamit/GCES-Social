@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
+import 'package:get/get.dart';
 
+import '../../app_controller.dart';
 import '../api/routine/routine_api.dart';
 import '../models/routine.dart';
 
@@ -8,8 +10,9 @@ class RoutineRepository {
 
   RoutineRepository(this._dio);
 
-  Future<ClassRoutine> getRoutine(String batch) async {
-    var routine = await RoutineApi(_dio).getRoutine(batch);
+  Future<ClassRoutine> getRoutine() async {
+    var routine =
+        await RoutineApi(_dio).getRoutine(Get.find<AppController>().batch);
     return ClassRoutine(routine);
   }
 }

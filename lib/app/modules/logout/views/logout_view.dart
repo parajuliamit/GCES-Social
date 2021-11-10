@@ -54,7 +54,9 @@ class LogoutView extends GetView<LogoutController> {
                   child: CustomButton(
                     color: Colors.white,
                     text: 'REGISTER',
-                    onPress: () {},
+                    onPress: () {
+                      Get.toNamed(Routes.REGISTER);
+                    },
                     textColor: kBackgroundColor,
                   ),
                 ),

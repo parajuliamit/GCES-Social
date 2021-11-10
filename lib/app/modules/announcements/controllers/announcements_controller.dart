@@ -26,8 +26,7 @@ class AnnouncementsController extends GetxController {
     isLoading.toggle();
     isError(false);
     try {
-      List<Announcement> response =
-          await announcementRepo.getAnnouncements('2017SE');
+      List<Announcement> response = await announcementRepo.getAnnouncements();
       List<Announcement> examResposne = [];
       List<Announcement> eventResposne = [];
       List<Announcement> generalResposne = [];

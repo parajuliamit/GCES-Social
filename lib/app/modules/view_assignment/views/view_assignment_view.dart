@@ -137,6 +137,17 @@ class ViewAssignmentView extends GetView<ViewAssignmentController> {
                                     child: Padding(
                                       padding: const EdgeInsets.all(10),
                                       child: ListTile(
+                                        subtitle: controller
+                                                    .assignment!
+                                                    .submissions[index]
+                                                    .teacherComment !=
+                                                null
+                                            ? Text('Remarks: ' +
+                                                controller
+                                                    .assignment!
+                                                    .submissions[index]
+                                                    .teacherComment!)
+                                            : const SizedBox(),
                                         leading: const Icon(Icons.file_copy),
                                         title: Text(
                                           controller.assignment!

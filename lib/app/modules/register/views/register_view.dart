@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:gces_social/app/routes/app_pages.dart';
-import 'package:gces_social/app/widgets/loading.dart';
+import 'package:gces_social/app/widgets/widgets.dart';
 
 import 'package:get/get.dart';
-import 'package:lottie/lottie.dart';
 
 import '../../../constants.dart';
-import '../controllers/login_screen_controller.dart';
-import '../../../widgets/widgets.dart';
+import '../controllers/register_controller.dart';
 
-class LoginScreenView extends GetView<LoginScreenController> {
+class RegisterView extends GetView<RegisterController> {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    var size = MediaQuery.of(context).size;
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
@@ -25,20 +23,27 @@ class LoginScreenView extends GetView<LoginScreenController> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Hero(
-                tag: 'logo',
-                child: Image.asset(
-                  'assets/images/logo.png',
-                  width: 220,
+              Flexible(
+                child: Opacity(
+                  opacity: 0.9,
+                  child: Hero(
+                    tag: 'logo',
+                    child: Image.asset(
+                      'assets/images/logo.png',
+                      width: 200,
+                    ),
+                  ),
                 ),
               ),
               //220
               const SizedBox(
-                height: 50,
+                height: 30,
               ),
               Obx(
-                () => controller.isLoading.value
-                    ? const Loading()
+                () => controller.isLoading.isTrue
+                    ? const Center(
+                        child: Loading(),
+                      )
                     : Column(
                         children: [
                           ListTile(
@@ -48,18 +53,59 @@ class LoginScreenView extends GetView<LoginScreenController> {
                               size: 40,
                             ),
                             title: TextField(
+                              controller: controller.nameController,
+                              textInputAction: TextInputAction.next,
+                              maxLength: 50,
+                              keyboardType: TextInputType.text,
+                              textAlign: TextAlign.left,
+                              style: kInputTextStyle,
+                              decoration: kInputDecoration.copyWith(
+                                  hintText: 'FULL NAME'),
+                            ),
+                          ),
+                          ListTile(
+                            leading: CircleAvatar(
+                              radius: 18,
+                              backgroundColor: Colors.white,
+                              child: Icon(
+                                Icons.alternate_email,
+                                color: kBackgroundColor.withOpacity(0.8),
+                                size: 30,
+                              ),
+                            ),
+                            title: TextField(
                               controller: controller.emailController,
                               textInputAction: TextInputAction.next,
+
                               maxLength: 30,
+                              // validator: (value) {
+                              // value = value.toLowerCase().trim();
+                              // if (value.isEmpty) {
+                              //   return 'E-mail can\'t be empty.';
+                              // }
+                              // if (value.length < 18 || value.indexOf('@') == -1) {
+                              //   return 'Enter valid college e-mail id.';
+                              // }
+                              // if (value.split('@')[1] != 'gces.edu.np') {
+                              //   return 'Enter valid college e-mail id.';
+                              // }
+                              // if (value.substring(0, 2) != 'be') {
+                              //   return 'Enter valid college e-mail id.';
+                              // }
+                              // return null;
+                              // },
                               keyboardType: TextInputType.emailAddress,
                               textAlign: TextAlign.left,
                               style: kInputTextStyle.copyWith(fontSize: 18),
+                              onChanged: (value) {
+                                // user.email = value.trim();
+                              },
                               decoration: kInputDecoration.copyWith(
-                                  hintText: 'E-MAIL ID'),
+                                  hintText: 'COLLEGE E-MAIL ID'),
                             ),
                           ),
                           const SizedBox(
-                            height: 8.0,
+                            height: 10,
                           ),
                           ListTile(
                             leading: CircleAvatar(
@@ -88,42 +134,34 @@ class LoginScreenView extends GetView<LoginScreenController> {
                                           color: Colors.white,
                                         ),
                                       ),
-                                      hintText: 'PASSWORD')),
+                                      hintText: 'NEW PASSWORD')),
                             ),
                           ),
-                          // Align(
-                          //   alignment: Alignment.centerRight,
-                          //   child: InkWell(
-                          //     onTap: () {},
-                          //     child: const Padding(
-                          //       padding: EdgeInsets.all(8.0),
-                          //       child: Text(
-                          //         'Forgot Password?',
-                          //         style: kSmallText,
-                          //       ),
-                          //     ),
-                          //   ),
-                          // ),
                           const SizedBox(
                             height: 20,
                           ),
                           Hero(
-                            tag: 'login',
-                            child: CustomButton(
-                              color: Colors.white.withOpacity(0.5),
-                              text: 'LOGIN',
-                              onPress: controller.login,
+                            tag: 'register',
+                            child: Builder(
+                              builder: (context) => CustomButton(
+                                color: Colors.white,
+                                text: 'REGISTER',
+                                onPress: () {
+                                  controller.register();
+                                },
+                                textColor: kBackgroundColor,
+                              ),
                             ),
                           ),
                           const SizedBox(height: 10),
                           InkWell(
                               onTap: () {
-                                Get.offNamed(Routes.REGISTER);
+                                Get.offNamed(Routes.LOGIN_SCREEN);
                               },
                               child: const Padding(
                                 padding: EdgeInsets.all(8.0),
                                 child: Text(
-                                  'Not Registered?',
+                                  'Already Registered?',
                                   style: kSmallText,
                                 ),
                               )),

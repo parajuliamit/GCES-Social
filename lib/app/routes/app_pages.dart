@@ -12,10 +12,14 @@ import 'package:gces_social/app/modules/login_screen/bindings/login_screen_bindi
 import 'package:gces_social/app/modules/login_screen/views/login_screen_view.dart';
 import 'package:gces_social/app/modules/logout/bindings/logout_binding.dart';
 import 'package:gces_social/app/modules/logout/views/logout_view.dart';
+import 'package:gces_social/app/modules/register/bindings/register_binding.dart';
+import 'package:gces_social/app/modules/register/views/register_view.dart';
 import 'package:gces_social/app/modules/routine_screen/bindings/routine_screen_binding.dart';
 import 'package:gces_social/app/modules/routine_screen/views/routine_screen_view.dart';
 import 'package:gces_social/app/modules/splash_screen/bindings/splash_screen_binding.dart';
 import 'package:gces_social/app/modules/splash_screen/views/splash_screen_view.dart';
+import 'package:gces_social/app/modules/verify_screen/bindings/verify_screen_binding.dart';
+import 'package:gces_social/app/modules/verify_screen/views/verify_screen_view.dart';
 import 'package:gces_social/app/modules/view_assignment/bindings/view_assignment_binding.dart';
 import 'package:gces_social/app/modules/view_assignment/views/view_assignment_view.dart';
 import 'package:gces_social/app/modules/view_blog/bindings/view_blog_binding.dart';
@@ -103,6 +107,16 @@ class AppPages {
       page: () => ChangePasswordView(),
       transition: Transition.leftToRight,
       binding: ChangePasswordBinding(),
+    ),
+    GetPage(
+      name: _Paths.REGISTER,
+      page: () => RegisterView(),
+      binding: RegisterBinding(),
+    ),
+    GetPage(
+      name: _Paths.VERIFY_SCREEN,
+      page: () => VerifyScreenView(),
+      binding: VerifyScreenBinding(),
     ),
   ];
 }

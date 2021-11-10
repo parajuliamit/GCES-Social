@@ -14,9 +14,8 @@ class SplashScreenController extends GetxController {
     if (await Get.find<AppController>().checkLogIn()) {
       var routine;
       try {
-        routine = await Get.find<AppRepository>()
-            .getRoutineRepository()
-            .getRoutine('2017SE');
+        routine =
+            await Get.find<AppRepository>().getRoutineRepository().getRoutine();
       } catch (e) {
         print(e);
       }

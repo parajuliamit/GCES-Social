@@ -23,7 +23,7 @@ class AssignmentScreenController extends GetxController {
     try {
       var response = await Get.find<AppRepository>()
           .getAssignmentRepository()
-          .getAssignments('2017SE');
+          .getAssignments();
 
       List<Assignment> todoResposne = [];
       List<Assignment> submittedResponse = [];
