@@ -22,13 +22,14 @@ class AppRepository extends GetxService {
   AppRepository(this._dioClient, this._sharedPreferences) {
     // Configure dio
     this._dioClient.options = BaseOptions(
-        baseUrl: baseUrl,
-        receiveDataWhenStatusError: true,
-        connectTimeout: 10 * 1000, // 10 seconds
-        receiveTimeout: 20 * 1000, // 20 seconds
-        validateStatus: (status) {
-          return status! <= 500;
-        });
+      baseUrl: baseUrl,
+      receiveDataWhenStatusError: true,
+      connectTimeout: 10 * 1000, // 10 seconds
+      receiveTimeout: 20 * 1000, // 20 seconds
+      // validateStatus: (status) {
+      //   return status! <= 500;
+      // }
+    );
 
     this
         ._dioClient

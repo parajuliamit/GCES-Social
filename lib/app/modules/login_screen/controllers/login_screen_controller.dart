@@ -37,8 +37,14 @@ class LoginScreenController extends GetxController {
 
       await appRepo.getAuthRepository().getLoginResponse(loginRequest);
 
+      var routine;
+      try {
+        routine = await appRepo.getRoutineRepository().getRoutine('2017SE');
+      } catch (e) {
+        print(e);
+      }
+      Get.offAllNamed(Routes.HOME, arguments: routine);
       isLoading(false);
-      Get.offAllNamed(Routes.HOME);
       return;
     } catch (e) {
       print(e);

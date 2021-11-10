@@ -4,6 +4,8 @@ import 'package:gces_social/app/modules/assignment_screen/bindings/assignment_sc
 import 'package:gces_social/app/modules/assignment_screen/views/assignment_screen_view.dart';
 import 'package:gces_social/app/modules/attendance_screen/bindings/attendance_screen_binding.dart';
 import 'package:gces_social/app/modules/attendance_screen/views/attendance_screen_view.dart';
+import 'package:gces_social/app/modules/change_password/bindings/change_password_binding.dart';
+import 'package:gces_social/app/modules/change_password/views/change_password_view.dart';
 import 'package:gces_social/app/modules/home/bindings/home_binding.dart';
 import 'package:gces_social/app/modules/home/views/home_view.dart';
 import 'package:gces_social/app/modules/login_screen/bindings/login_screen_binding.dart';
@@ -95,6 +97,12 @@ class AppPages {
       page: () => ViewAssignmentView(),
       transition: Transition.zoom,
       binding: ViewAssignmentBinding(),
+    ),
+    GetPage(
+      name: _Paths.CHANGE_PASSWORD,
+      page: () => ChangePasswordView(),
+      transition: Transition.leftToRight,
+      binding: ChangePasswordBinding(),
     ),
   ];
 }

@@ -43,8 +43,8 @@ class ViewAssignmentController extends GetxController {
       "assignment": assignmentId
     });
     try {
-      var response = await appRepo.dio
-          .post("${baseUrl}assignment/submit/", data: formData);
+      var response =
+          await appRepo.dio.post("assignment/submit/", data: formData);
       Get.back();
       Get.rawSnackbar(message: 'Success', duration: const Duration(seconds: 2));
     } catch (e) {

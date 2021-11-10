@@ -90,7 +90,7 @@ class HomeDrawer extends StatelessWidget {
                 ),
                 IconText(
                   onPress: () {
-                    print('Pressed');
+                    Get.toNamed(Routes.CHANGE_PASSWORD);
                   },
                   text: 'Change Password',
                   icon: Icons.settings,
