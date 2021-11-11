@@ -41,7 +41,7 @@ class GcesSocial extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialBinding: BindingsBuilder(() {
         Get.lazyPut(() => AppRepository(Dio(), sharedPrefs));
-        Get.lazyPut(() => AppController(), fenix: true);
+        Get.put(AppController(), permanent: true);
       }),
     );
   }
