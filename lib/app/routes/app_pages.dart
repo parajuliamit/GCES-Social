@@ -2,10 +2,10 @@ import 'package:get/get.dart';
 
 import 'package:gces_social/app/modules/assignment_screen/bindings/assignment_screen_binding.dart';
 import 'package:gces_social/app/modules/assignment_screen/views/assignment_screen_view.dart';
-import 'package:gces_social/app/modules/attendance_screen/bindings/attendance_screen_binding.dart';
-import 'package:gces_social/app/modules/attendance_screen/views/attendance_screen_view.dart';
 import 'package:gces_social/app/modules/change_password/bindings/change_password_binding.dart';
 import 'package:gces_social/app/modules/change_password/views/change_password_view.dart';
+import 'package:gces_social/app/modules/events/bindings/events_binding.dart';
+import 'package:gces_social/app/modules/events/views/events_view.dart';
 import 'package:gces_social/app/modules/home/bindings/home_binding.dart';
 import 'package:gces_social/app/modules/home/views/home_view.dart';
 import 'package:gces_social/app/modules/login_screen/bindings/login_screen_binding.dart';
@@ -26,6 +26,9 @@ import 'package:gces_social/app/modules/view_blog/bindings/view_blog_binding.dar
 import 'package:gces_social/app/modules/view_blog/views/view_blog_view.dart';
 import 'package:gces_social/app/modules/write_blog/bindings/write_blog_binding.dart';
 import 'package:gces_social/app/modules/write_blog/views/write_blog_view.dart';
+
+// import 'package:gces_social/app/modules/attendance_screen/bindings/attendance_screen_binding.dart';
+// import 'package:gces_social/app/modules/attendance_screen/views/attendance_screen_view.dart';
 
 // import 'package:gces_social/app/modules/announcements/bindings/announcements_binding.dart';
 // import 'package:gces_social/app/modules/announcements/views/announcements_view.dart';
@@ -91,11 +94,11 @@ class AppPages {
       page: () => AssignmentScreenView(),
       binding: AssignmentScreenBinding(),
     ),
-    GetPage(
-      name: _Paths.ATTENDANCE_SCREEN,
-      page: () => AttendanceScreenView(),
-      binding: AttendanceScreenBinding(),
-    ),
+    // GetPage(
+    //   name: _Paths.ATTENDANCE_SCREEN,
+    //   page: () => AttendanceScreenView(),
+    //   binding: AttendanceScreenBinding(),
+    // ),
     GetPage(
       name: _Paths.VIEW_ASSIGNMENT,
       page: () => ViewAssignmentView(),
@@ -117,6 +120,11 @@ class AppPages {
       name: _Paths.VERIFY_SCREEN,
       page: () => VerifyScreenView(),
       binding: VerifyScreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.EVENTS,
+      page: () => EventsView(),
+      binding: EventsBinding(),
     ),
   ];
 }

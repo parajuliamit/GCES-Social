@@ -137,11 +137,11 @@ class HomeTabView extends GetView<HomeTabController> {
         }),
 
     Categories(
-        icon: Icons.fact_check_outlined,
-        title: 'Attendance',
+        icon: Icons.date_range,
+        title: 'Events',
         color: Colors.blue,
         onPress: () {
-          Get.toNamed(Routes.ATTENDANCE_SCREEN);
+          Get.toNamed(Routes.EVENTS);
         }),
     Categories(
       icon: Icons.question_answer_outlined,

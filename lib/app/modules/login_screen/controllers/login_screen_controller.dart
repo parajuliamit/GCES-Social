@@ -4,6 +4,7 @@ import 'package:gces_social/app/app_repository.dart';
 import 'package:gces_social/app/data/exception/server_exception.dart';
 import 'package:gces_social/app/routes/app_pages.dart';
 import 'package:get/get.dart';
+import '../../../app_controller.dart';
 import '../../../data/models/login/login_request.dart';
 
 class LoginScreenController extends GetxController {
@@ -38,7 +39,7 @@ class LoginScreenController extends GetxController {
           username: emailController.text, password: passwordController.text);
 
       await appRepo.getAuthRepository().getLoginResponse(loginRequest);
-
+      await Get.find<AppController>().checkLogIn();
       var routine;
       try {
         routine = await appRepo.getRoutineRepository().getRoutine();

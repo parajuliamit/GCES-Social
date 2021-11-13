@@ -51,16 +51,20 @@ class HomeDrawer extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                const Text(
-                  'Ram Hari Aryal',
-                  style: TextStyle(fontSize: 20),
+                Obx(
+                  () => Text(
+                    Get.find<AppController>().obsName.value,
+                    style: const TextStyle(fontSize: 20),
+                  ),
                 ),
                 const SizedBox(
                   height: 5,
                 ),
-                const Text(
-                  'BESE2017',
-                  style: TextStyle(fontWeight: FontWeight.w300),
+                Obx(
+                  () => Text(
+                    Get.find<AppController>().obsBatch.value,
+                    style: const TextStyle(fontWeight: FontWeight.w300),
+                  ),
                 )
               ],
             ),

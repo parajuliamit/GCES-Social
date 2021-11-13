@@ -33,6 +33,10 @@ class AuthRepository {
     return _sharedPreferences.getString('loginResponseLocal')!.isNotEmpty;
   }
 
+  Future<LoginResponse?> getCacheResponse() async {
+    return await LoginResponseCache(this._sharedPreferences).get();
+  }
+
   Future<LoginResponse> registerUser(RegisterRequest registerRequest) async {
     LoginResponse loginResponse;
 

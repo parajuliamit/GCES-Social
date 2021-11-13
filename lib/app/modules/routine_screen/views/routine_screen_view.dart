@@ -14,12 +14,12 @@ class RoutineScreenView extends GetView<RoutineScreenController> {
         backgroundColor: Colors.deepPurple,
       ),
       body: Obx(
-        () => controller.routine == null || controller.isError.isTrue
-            ? ErrorPage('Unable to load routine', controller.loadRoutine)
-            : controller.isLoading.isTrue
-                ? const Center(
-                    child: Loading(),
-                  )
+        () => controller.isLoading.isTrue
+            ? const Center(
+                child: Loading(),
+              )
+            : controller.routine == null || controller.isError.isTrue
+                ? ErrorPage('Unable to load routine', controller.loadRoutine)
                 : Row(
                     children: [
                       Container(

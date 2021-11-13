@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:gces_social/app/data/models/event.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../../models/announcement.dart';
@@ -11,4 +12,7 @@ abstract class AnnouncementApi {
 
   @GET("announcements/{batch}/")
   Future<List<Announcement>> getAnnouncements(@Path("batch") String batch);
+
+  @GET("events/{batch}/")
+  Future<List<Event>> getEvents(@Path("batch") String batch);
 }

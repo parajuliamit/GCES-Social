@@ -14,11 +14,12 @@ abstract class Routes {
   // static const CHAT_SCREEN = _Paths.CHAT_SCREEN;
   static const ROUTINE_SCREEN = _Paths.ROUTINE_SCREEN;
   static const ASSIGNMENT_SCREEN = _Paths.ASSIGNMENT_SCREEN;
-  static const ATTENDANCE_SCREEN = _Paths.ATTENDANCE_SCREEN;
+  // static const ATTENDANCE_SCREEN = _Paths.ATTENDANCE_SCREEN;
   static const VIEW_ASSIGNMENT = _Paths.VIEW_ASSIGNMENT;
   static const CHANGE_PASSWORD = _Paths.CHANGE_PASSWORD;
   static const REGISTER = _Paths.REGISTER;
   static const VERIFY_SCREEN = _Paths.VERIFY_SCREEN;
+  static const EVENTS = _Paths.EVENTS;
 }
 
 abstract class _Paths {
@@ -32,9 +33,10 @@ abstract class _Paths {
   // static const CHAT_SCREEN = '/chat-screen';
   static const ROUTINE_SCREEN = '/routine-screen';
   static const ASSIGNMENT_SCREEN = '/assignment-screen';
-  static const ATTENDANCE_SCREEN = '/attendance-screen';
+  // static const ATTENDANCE_SCREEN = '/attendance-screen';
   static const VIEW_ASSIGNMENT = '/view-assignment';
   static const CHANGE_PASSWORD = '/change-password';
   static const REGISTER = '/register';
   static const VERIFY_SCREEN = '/verify-screen';
+  static const EVENTS = '/events';
 }

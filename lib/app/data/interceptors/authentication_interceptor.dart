@@ -36,7 +36,11 @@ class AuthenticationInterceptor extends Interceptor {
 
   @override
   Future onError(DioError err, ErrorInterceptorHandler handler) async {
-    print("onError: ${err.response!.statusCode}");
+    if (err.response != null) {
+      print("onError: ${err.response!.statusCode}");
+    } else {
+      print(err.response);
+    }
     return handler.next(err);
   }
 }

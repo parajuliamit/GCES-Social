@@ -35,11 +35,31 @@ class RegisterController extends GetxController {
       return;
     }
     // if (!GetUtils.isEmail(emailController.text)) {
-    if (emailController.text.isEmpty) {
+    var email = emailController.text.trim();
+    if (email.isEmpty) {
       Get.rawSnackbar(
           message: 'Enter a valid email.',
           duration: const Duration(seconds: 2));
       return;
+    } else {
+      if (email.length < 18 || !email.contains('@')) {
+        Get.rawSnackbar(
+            message: 'Enter valid college e-mail id.',
+            duration: const Duration(seconds: 2));
+        return;
+      }
+      if (email.split('@')[1] != 'gces.edu.np') {
+        Get.rawSnackbar(
+            message: 'Enter valid college e-mail id.',
+            duration: const Duration(seconds: 2));
+        return;
+      }
+      if (email.substring(0, 2) != 'be') {
+        Get.rawSnackbar(
+            message: 'Enter valid college e-mail id.',
+            duration: const Duration(seconds: 2));
+        return;
+      }
     }
     if (passwordController.text.isEmpty) {
       Get.rawSnackbar(

@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:gces_social/app/app_controller.dart';
 import 'package:gces_social/app/app_repository.dart';
 import 'package:gces_social/app/data/exception/server_exception.dart';
 import 'package:gces_social/app/data/models/register/verify_otp.dart';
@@ -32,6 +33,7 @@ class VerifyScreenController extends GetxController {
 
       await appRepo.getAuthRepository().verifyOtp(request);
       var routine;
+      await Get.find<AppController>().checkLogIn();
       try {
         routine = await appRepo.getRoutineRepository().getRoutine();
       } catch (e) {

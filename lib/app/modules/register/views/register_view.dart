@@ -76,30 +76,10 @@ class RegisterView extends GetView<RegisterController> {
                             title: TextField(
                               controller: controller.emailController,
                               textInputAction: TextInputAction.next,
-
                               maxLength: 30,
-                              // validator: (value) {
-                              // value = value.toLowerCase().trim();
-                              // if (value.isEmpty) {
-                              //   return 'E-mail can\'t be empty.';
-                              // }
-                              // if (value.length < 18 || value.indexOf('@') == -1) {
-                              //   return 'Enter valid college e-mail id.';
-                              // }
-                              // if (value.split('@')[1] != 'gces.edu.np') {
-                              //   return 'Enter valid college e-mail id.';
-                              // }
-                              // if (value.substring(0, 2) != 'be') {
-                              //   return 'Enter valid college e-mail id.';
-                              // }
-                              // return null;
-                              // },
                               keyboardType: TextInputType.emailAddress,
                               textAlign: TextAlign.left,
                               style: kInputTextStyle.copyWith(fontSize: 18),
-                              onChanged: (value) {
-                                // user.email = value.trim();
-                              },
                               decoration: kInputDecoration.copyWith(
                                   hintText: 'COLLEGE E-MAIL ID'),
                             ),
