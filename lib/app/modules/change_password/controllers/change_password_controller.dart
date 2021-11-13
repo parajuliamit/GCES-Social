@@ -1,11 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:gces_social/app/app_controller.dart';
 import 'package:gces_social/app/app_repository.dart';
 import 'package:gces_social/app/data/exception/server_exception.dart';
 import 'package:gces_social/app/data/models/login/login_request.dart';
 import 'package:get/get.dart';
-
-import '../../../constants.dart';
 
 class ChangePasswordController extends GetxController {
   late final TextEditingController oldController;
@@ -41,7 +40,8 @@ class ChangePasswordController extends GetxController {
     isLoading(true);
     try {
       await appRepo.getAuthRepository().getLoginResponse(LoginRequest(
-          username: 'amit@email.com', password: oldController.text));
+          username: Get.find<AppController>().email,
+          password: oldController.text));
       await appRepo.dio.put("users/change-password/",
           data: {"password": newController.text});
       Get.back();

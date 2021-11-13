@@ -65,23 +65,26 @@ class ViewAssignmentView extends GetView<ViewAssignmentController> {
                                 ),
                                 controller.assignment!.file == null
                                     ? const SizedBox()
-                                    : Row(
-                                        children: [
-                                          const Text('Attachment:'),
-                                          TextButton(
-                                            onPressed: () {
-                                              launch(
-                                                  controller.assignment!.file!);
-                                            },
-                                            child: Row(
-                                              children: const [
-                                                Icon(Icons.insert_drive_file),
-                                                Text(' Go to Drive')
-                                              ],
-                                            ),
+                                    : controller.assignment!.file!.isEmpty
+                                        ? const SizedBox()
+                                        : Row(
+                                            children: [
+                                              const Text('Attachment:'),
+                                              TextButton(
+                                                onPressed: () {
+                                                  launch(controller
+                                                      .assignment!.file!);
+                                                },
+                                                child: Row(
+                                                  children: const [
+                                                    Icon(Icons
+                                                        .insert_drive_file),
+                                                    Text(' Go to Drive')
+                                                  ],
+                                                ),
+                                              )
+                                            ],
                                           )
-                                        ],
-                                      )
                               ],
                             ),
                           ),

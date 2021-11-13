@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
-const baseUrl = 'http://3aea-27-34-108-14.ngrok.io/api/';
-const imageBaseUrl = 'http://3aea-27-34-108-14.ngrok.io';
+const baseUrl =
+    'https://gcessocial.loca.lt/api/';
+const imageBaseUrl =
+    'https://gcessocial.loca.lt';
 
 final TextStyle kDrawerTitleText =
     TextStyle(fontSize: 17, color: Colors.grey[700]);

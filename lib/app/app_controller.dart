@@ -10,6 +10,7 @@ class AppController extends GetxController {
 
   String batch = '';
   String name = '';
+  String email = '';
 
   @override
   void onInit() {
@@ -24,6 +25,7 @@ class AppController extends GetxController {
         if (response != null) {
           batch = response.email.substring(2, 8).toUpperCase();
           name = response.name;
+          email = response.email;
           obsName(name);
           obsBatch(batch);
         }

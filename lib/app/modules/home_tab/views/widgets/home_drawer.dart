@@ -78,7 +78,7 @@ class HomeDrawer extends StatelessWidget {
                   onPress: () {
                     launch('https://pu.edu.np/noticetype/examination/');
                   },
-                  text: 'Examination',
+                  text: 'PU Examination',
                   icon: Icons.article_rounded,
                 ),
                 IconText(
